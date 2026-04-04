@@ -449,18 +449,25 @@ function toggleTokenVis() {
 
 async function setupLogin() {
   const t = document.getElementById('token-input').value.trim();
-  const err = document.getElementById('setup-error');
   if (!t) { showSetupError('トークンを入力してください'); return; }
+  const btn = document.querySelector('.btn-setup');
+  btn.textContent = '確認中...';
+  btn.disabled = true;
   try {
     const res = await fetch(`${API}/repos/${REPO}`, {
       headers: { Authorization: `token ${t}` }
     });
-    if (!res.ok) throw new Error('認証失敗');
+    if (res.status === 401) throw new Error('トークンが無効です。期限切れか、コピーミスの可能性があります。');
+    if (res.status === 403) throw new Error('アクセス権限がありません。トークンに "repo" スコープが必要です。');
+    if (res.status === 404) throw new Error(`リポジトリ "${REPO}" が見つかりません。非公開の場合はトークンに repo スコープが必要です。`);
+    if (!res.ok) throw new Error(`GitHub APIエラー (${res.status})`);
     localStorage.setItem('gh_token', t);
     token = t;
     bootApp();
   } catch(e) {
-    showSetupError('トークンが正しくないか、リポジトリにアクセスできません');
+    showSetupError(e.message || 'ネットワークエラーが発生しました');
+    btn.textContent = '管理画面に入る';
+    btn.disabled = false;
   }
 }
 
