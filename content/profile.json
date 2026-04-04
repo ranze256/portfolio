@@ -12,13 +12,13 @@
     "booth": "",
     "github": "",
     "discord": "",
-    "youtube": ""
+    "youtube": "https://www.youtube.com/@ranran6240"
   },
   "stats": [
     {
       "icon": "🌍",
       "label": "制作ワールド",
-      "value": "0",
+      "value": "10",
       "suffix": "個"
     },
     {
@@ -30,14 +30,8 @@
     {
       "icon": "💼",
       "label": "案件実績",
-      "value": "0",
+      "value": "20",
       "suffix": "件"
-    },
-    {
-      "icon": "⭐",
-      "label": "VRChat歴",
-      "value": "0",
-      "suffix": "年"
     }
   ],
   "commission_status": "open",
