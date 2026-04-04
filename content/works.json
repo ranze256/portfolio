@@ -1,0 +1,56 @@
+{
+  "works": [
+    {
+      "id": "world-sample-01",
+      "title": "サンプルワールド（ここを書き換えてください）",
+      "category": "world",
+      "thumbnail": "images/works/world-sample-01.jpg",
+      "description": "制作したワールドの説明をここに書きます。どんな雰囲気のワールドか、制作にかかった期間や使用ツールなどを書くと伝わりやすいです。",
+      "tags": ["Unity", "VRChat", "Blender"],
+      "date": "2025-01",
+      "links": { "vrchat": "", "booth": "", "twitter": "", "youtube": "" },
+      "client": "",
+      "featured": true,
+      "published": true
+    },
+    {
+      "id": "avatar-sample-01",
+      "title": "サンプルアバター改変",
+      "category": "avatar",
+      "thumbnail": "images/works/avatar-sample-01.jpg",
+      "description": "制作したアバターの説明。ベースアバター、改変内容、使用ツールなどを記載。",
+      "tags": ["VRChat", "Blender", "Unity"],
+      "date": "2025-02",
+      "links": { "booth": "", "twitter": "" },
+      "client": "",
+      "featured": false,
+      "published": true
+    },
+    {
+      "id": "event-sample-01",
+      "title": "サンプルイベント",
+      "category": "event",
+      "thumbnail": "images/works/event-sample-01.jpg",
+      "description": "開催したイベントの説明。参加人数、内容、コンセプトなどを書きましょう。",
+      "tags": ["VRChat", "イベント企画"],
+      "date": "2025-03",
+      "links": { "twitter": "", "youtube": "" },
+      "client": "",
+      "featured": false,
+      "published": true
+    },
+    {
+      "id": "commission-sample-01",
+      "title": "受注案件サンプル",
+      "category": "commission",
+      "thumbnail": "images/works/commission-sample-01.jpg",
+      "description": "受注した案件の概要。クライアントの許可が得られた範囲で掲載しましょう。内容・期間・担当範囲など。",
+      "tags": ["Unity", "ワールド制作", "受注"],
+      "date": "2025-04",
+      "links": {},
+      "client": "クライアント名（任意）",
+      "featured": true,
+      "published": true
+    }
+  ]
+}

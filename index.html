@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <meta name="description" content="VRChat クリエイターのポートフォリオ">
+  <meta property="og:title"       content="Portfolio">
+  <meta property="og:description" content="VRChat Creator Portfolio">
+  <meta property="og:type"        content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== Navigation ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" id="nav-logo">PORT<span>FOLIO</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ========== Hero ========== -->
+  <section id="hero" class="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-grid"></div>
+    <div class="hero-accent-line"></div>
+    <div class="hero-content">
+      <div class="hero-inner">
+
+        <!-- Text side -->
+        <div class="hero-text">
+          <div class="hero-eyebrow">
+            VRChat Creator
+            <span id="commission-badge" class="commission-badge" style="display:none"></span>
+          </div>
+          <h1 class="hero-name" id="hero-name">Your Name</h1>
+          <p class="hero-tagline" id="hero-tagline"></p>
+          <div class="hero-social" id="hero-social"></div>
+          <div class="hero-cta">
+            <a href="#works" class="btn btn-primary">
+              <i class="fa-solid fa-play"></i> Works を見る
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              Contact
+            </a>
+          </div>
+        </div>
+
+        <!-- Avatar side -->
+        <div class="hero-avatar-col">
+          <div class="hero-avatar-wrap" id="hero-avatar-wrap">
+            <div class="hero-avatar-frame">
+              <div class="hero-avatar-placeholder">🎮</div>
+            </div>
+            <div class="hero-avatar-corner tl"></div>
+            <div class="hero-avatar-corner tr"></div>
+            <div class="hero-avatar-corner bl"></div>
+            <div class="hero-avatar-corner br"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- ========== About ========== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">About</div>
+        <h2 class="section-title">クリエイターについて</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-bio reveal">
+          <h3>自己紹介</h3>
+          <p id="bio-text"></p>
+        </div>
+        <div class="stats-grid" id="stats-grid">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Works ========== -->
+  <section id="works" class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Works</div>
+        <h2 class="section-title">制作実績・ポートフォリオ</h2>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="world">🌍 World</button>
+        <button class="filter-btn" data-filter="avatar">🎭 Avatar</button>
+        <button class="filter-btn" data-filter="event">🎉 Event</button>
+        <button class="filter-btn" data-filter="commission">💼 Commission</button>
+        <button class="filter-btn" data-filter="other">Other</button>
+      </div>
+      <div class="works-grid" id="works-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Skills ========== -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Skills</div>
+        <h2 class="section-title">使用ツール・技術</h2>
+      </div>
+      <div class="skills-sections" id="skills-container">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Contact ========== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">お問い合わせ</h2>
+      </div>
+      <p class="contact-intro">
+        お仕事のご依頼・コラボのお誘いなど、お気軽にどうぞ。
+      </p>
+      <div class="contact-grid" id="contact-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">PORT<span>FOLIO</span></div>
+        <p class="footer-copy" id="footer-text"></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== Work Detail Modal ========== -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close" aria-label="閉じる">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Main Script -->
+  <script src="js/main.js"></script>
+</body>
+</html>
