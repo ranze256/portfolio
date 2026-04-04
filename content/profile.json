@@ -28,9 +28,15 @@
       "suffix": "件"
     },
     {
-      "icon": "📊",
+      "icon": "🎨",
       "label": "制作ロゴ",
       "value": "4",
+      "suffix": "個"
+    },
+    {
+      "icon": "🎬",
+      "label": "制作MV（自主制作含む）",
+      "value": "6",
       "suffix": "個"
     }
   ],
