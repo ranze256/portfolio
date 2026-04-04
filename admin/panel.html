@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --bg:       #2a2a2a;
+  --bg1:      #333333;
+  --bg2:      #3d3d3d;
+  --bg3:      #474747;
+  --red:      #E8001D;
+  --red-dim:  rgba(232,0,29,0.12);
+  --red-brd:  rgba(232,0,29,0.35);
+  --t1:       #ffffff;
+  --t2:       #aaaaaa;
+  --t3:       #666666;
+  --brd:      rgba(255,255,255,0.08);
+  --brd2:     rgba(255,255,255,0.14);
+  --green:    #22c55e;
+  --yellow:   #f59e0b;
+  --r:        6px;
+  --font:     'Inter','Noto Sans JP',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--t1);font-family:var(--font);font-size:14px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:var(--font);font-size:14px;color:var(--t1)}
+input,textarea,select{font-family:var(--font);font-size:14px;color:var(--t1);background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);padding:10px 14px;width:100%;outline:none;transition:border-color .2s}
+input:focus,textarea:focus,select:focus{border-color:var(--red)}
+textarea{resize:vertical;min-height:80px}
+select option{background:var(--bg2)}
+label{display:block;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--t2);margin-bottom:6px;text-transform:uppercase}
+
+/* ─── Setup Screen ─── */
+#setup{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999}
+.setup-box{width:100%;max-width:480px;padding:48px;background:var(--bg1);border:1px solid var(--brd2);border-radius:12px}
+.setup-logo{font-size:22px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.setup-logo span{color:var(--red)}
+.setup-sub{color:var(--t3);margin-bottom:32px;font-size:13px}
+.setup-steps{margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--t2)}
+.step-num{width:22px;height:22px;border-radius:50%;background:var(--red-dim);border:1px solid var(--red-brd);color:var(--red);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step a{color:var(--red)}
+.token-input-wrap{position:relative;margin-bottom:16px}
+.token-input-wrap input{padding-right:44px}
+.token-toggle{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--t3);cursor:pointer}
+.btn-setup{width:100%;padding:13px;background:var(--red);color:#fff;border-radius:var(--r);font-weight:700;font-size:14px;letter-spacing:.04em;transition:background .2s}
+.btn-setup:hover{background:#c8001a}
+.setup-error{color:#f87171;font-size:12px;margin-top:10px;display:none}
+
+/* ─── App Shell ─── */
+#app{display:grid;grid-template-columns:220px 1fr;grid-template-rows:56px 1fr;height:100vh;display:none}
+
+/* Topbar */
+.topbar{grid-column:1/-1;background:var(--bg1);border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;padding:0 24px;gap:16px}
+.topbar-logo{font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.topbar-logo span{color:var(--red)}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.save-status{font-size:12px;font-weight:600;letter-spacing:.04em;display:flex;align-items:center;gap:6px;color:var(--t3)}
+.save-status.saving{color:var(--yellow)}
+.save-status.saved{color:var(--green)}
+.save-status.error{color:#f87171}
+.btn-preview{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;border:1px solid var(--brd2);border-radius:var(--r);font-size:12px;font-weight:600;color:var(--t2);transition:all .2s}
+.btn-preview:hover{color:var(--t1);border-color:var(--red)}
+.btn-logout{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border:1px solid var(--brd);border-radius:var(--r);font-size:12px;color:var(--t3);transition:all .2s}
+.btn-logout:hover{color:var(--t1);border-color:var(--brd2)}
+
+/* Sidebar */
+.sidebar{background:var(--bg1);border-right:1px solid var(--brd);padding:16px 12px;display:flex;flex-direction:column;gap:4px;overflow-y:auto}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--r);color:var(--t2);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;border:1px solid transparent}
+.nav-item:hover{color:var(--t1);background:var(--bg2)}
+.nav-item.active{color:var(--t1);background:var(--red-dim);border-color:var(--red-brd)}
+.nav-item i{width:16px;text-align:center;font-size:14px}
+.nav-item.active i{color:var(--red)}
+.sidebar-section{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);padding:12px 14px 6px;margin-top:8px}
+
+/* Main content */
+.main{overflow-y:auto;padding:28px 32px;background:var(--bg)}
+
+/* Page headers */
+.page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.page-title{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.btn-add{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--red);color:#fff;border-radius:var(--r);font-size:13px;font-weight:700;transition:background .2s}
+.btn-add:hover{background:#c8001a}
+
+/* Works grid */
+.works-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.work-thumb-card{background:var(--bg1);border:1px solid var(--brd);border-radius:10px;overflow:hidden;transition:all .2s;position:relative}
+.work-thumb-card:hover{border-color:var(--brd2)}
+.work-thumb-card .card-img{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--t3)}
+.work-thumb-card .card-img img{width:100%;height:100%;object-fit:cover}
+.card-body{padding:14px 16px}
+.card-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.cat-badge{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.cat-world     {background:var(--red-dim);color:var(--red);border:1px solid var(--red-brd)}
+.cat-avatar    {background:rgba(139,92,246,.12);color:#a78bfa;border:1px solid rgba(139,92,246,.25)}
+.cat-event     {background:rgba(6,182,212,.10);color:#22d3ee;border:1px solid rgba(6,182,212,.25)}
+.cat-commission{background:rgba(245,158,11,.10);color:#fcd34d;border:1px solid rgba(245,158,11,.25)}
+.cat-other     {background:var(--bg2);color:var(--t2);border:1px solid var(--brd)}
+.card-title{font-size:13px;font-weight:600;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-date{font-size:11px;color:var(--t3)}
+.card-actions{display:flex;gap:6px;padding:10px 16px;border-top:1px solid var(--brd)}
+.btn-edit,.btn-delete{flex:1;padding:7px;border-radius:var(--r);font-size:12px;font-weight:600;transition:all .2s;text-align:center}
+.btn-edit{background:var(--bg2);color:var(--t2);border:1px solid var(--brd)}
+.btn-edit:hover{color:var(--t1);border-color:var(--brd2)}
+.btn-delete{background:rgba(239,68,68,.08);color:#f87171;border:1px solid rgba(239,68,68,.2)}
+.btn-delete:hover{background:rgba(239,68,68,.16);border-color:rgba(239,68,68,.4)}
+.unpublished-mark{position:absolute;top:8px;right:8px;padding:3px 8px;background:rgba(0,0,0,.7);color:var(--t3);border-radius:4px;font-size:10px;font-weight:700}
+
+/* Profile / Skills sections */
+.form-section{background:var(--bg1);border:1px solid var(--brd);border-radius:10px;padding:24px;margin-bottom:20px}
+.form-section-title{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t2);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.form-section-title::before{content:'';width:3px;height:14px;background:var(--red);border-radius:2px}
+.form-grid{display:grid;gap:16px}
+.form-grid.col2{grid-template-columns:1fr 1fr}
+.form-grid.col3{grid-template-columns:1fr 1fr 1fr}
+.field{display:flex;flex-direction:column}
+.hint{font-size:11px;color:var(--t3);margin-top:5px}
+.btn-save-section{margin-top:20px;padding:11px 28px;background:var(--red);color:#fff;border-radius:var(--r);font-weight:700;font-size:13px;transition:background .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-save-section:hover{background:#c8001a}
+
+/* Tags input */
+.tags-wrap{display:flex;flex-wrap:wrap;gap:6px;padding:8px;background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);min-height:44px;align-items:center;cursor:text}
+.tags-wrap:focus-within{border-color:var(--red)}
+.tag-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;background:var(--bg3);border:1px solid var(--brd2);border-radius:4px;font-size:12px;color:var(--t1)}
+.tag-pill button{color:var(--t3);font-size:13px;line-height:1;padding:0;transition:color .15s}
+.tag-pill button:hover{color:#f87171}
+.tags-input{border:none;background:transparent;outline:none;font-size:13px;color:var(--t1);min-width:80px;flex:1;padding:2px 4px}
+
+/* Skills list */
+.skill-list{display:flex;flex-direction:column;gap:8px}
+.skill-row{display:grid;grid-template-columns:1fr 160px 100px 36px;gap:8px;align-items:center}
+.skill-row input,
+.skill-row select{padding:8px 12px}
+.btn-remove{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:var(--r);background:rgba(239,68,68,.08);color:#f87171;border:1px solid rgba(239,68,68,.2);font-size:14px;transition:all .2s;flex-shrink:0}
+.btn-remove:hover{background:rgba(239,68,68,.2)}
+.btn-add-skill{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);color:var(--t2);font-size:13px;font-weight:600;margin-top:12px;transition:all .2s}
+.btn-add-skill:hover{color:var(--t1);border-color:var(--brd2)}
+
+/* Stats list */
+.stat-row{display:grid;grid-template-columns:40px 1fr 80px 80px 36px;gap:8px;align-items:center}
+.stat-row input{padding:8px 12px}
+.stat-emoji-btn{width:40px;height:40px;background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:text}
+
+/* ─── Edit Modal ─── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg1);border:1px solid var(--brd2);border-radius:12px;width:100%;max-width:960px;max-height:92vh;display:flex;flex-direction:column;animation:modal-in .2s ease-out}
+@keyframes modal-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.modal::before{content:'';height:3px;background:var(--red);border-radius:12px 12px 0 0;flex-shrink:0}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--brd);flex-shrink:0}
+.modal-title{font-size:16px;font-weight:700}
+.modal-close{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:var(--r);border:1px solid var(--brd);color:var(--t3);font-size:18px;transition:all .2s}
+.modal-close:hover{color:var(--t1);border-color:var(--brd2)}
+.modal-body{display:grid;grid-template-columns:1fr 320px;flex:1;overflow:hidden}
+.modal-form{padding:24px;overflow-y:auto;display:flex;flex-direction:column;gap:16px;border-right:1px solid var(--brd)}
+.modal-preview{padding:20px;overflow-y:auto;background:var(--bg)}
+.modal-preview-title{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:14px}
+.modal-footer{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:16px 24px;border-top:1px solid var(--brd);flex-shrink:0}
+.btn-cancel{padding:10px 20px;background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);color:var(--t2);font-weight:600;font-size:13px;transition:all .2s}
+.btn-cancel:hover{color:var(--t1);border-color:var(--brd2)}
+.btn-save{padding:10px 24px;background:var(--red);color:#fff;border-radius:var(--r);font-weight:700;font-size:13px;transition:background .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-save:hover{background:#c8001a}
+.btn-save:disabled{opacity:.5;cursor:not-allowed}
+
+/* Image upload area */
+.img-upload{border:2px dashed var(--brd2);border-radius:var(--r);padding:20px;text-align:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.img-upload:hover,.img-upload.dragover{border-color:var(--red);background:var(--red-dim)}
+.img-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.img-upload-icon{font-size:24px;color:var(--t3);margin-bottom:8px}
+.img-upload-text{font-size:12px;color:var(--t3)}
+.img-preview-wrap{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;background:var(--bg2)}
+.img-preview-wrap img{width:100%;height:100%;object-fit:cover}
+.img-clear{position:absolute;top:6px;right:6px;width:26px;height:26px;background:rgba(0,0,0,.7);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;cursor:pointer;transition:background .2s}
+.img-clear:hover{background:rgba(239,68,68,.8)}
+
+/* Preview card (in modal) */
+.preview-card{background:var(--bg1);border:1px solid var(--brd);border-radius:8px;overflow:hidden;font-size:12px}
+.preview-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--t3)}
+.preview-thumb img{width:100%;height:100%;object-fit:cover}
+.preview-body{padding:12px 14px}
+.preview-meta{display:flex;align-items:center;gap:7px;margin-bottom:7px;flex-wrap:wrap}
+.preview-title{font-size:13px;font-weight:600;margin-bottom:5px}
+.preview-desc{font-size:11px;color:var(--t2);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.preview-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.preview-tag{padding:2px 7px;background:var(--bg2);border:1px solid var(--brd);border-radius:3px;font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.05em}
+.preview-date{font-size:10px;color:var(--t3);margin-left:auto}
+
+/* Toast */
+.toast{position:fixed;bottom:28px;right:28px;padding:12px 20px;border-radius:var(--r);font-size:13px;font-weight:600;z-index:9999;transform:translateY(20px);opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{background:#166534;border:1px solid #22c55e;color:#86efac}
+.toast.error{background:#7f1d1d;border:1px solid #f87171;color:#fca5a5}
+
+/* Empty state */
+.empty-state{text-align:center;padding:60px 20px;color:var(--t3)}
+.empty-state i{font-size:40px;margin-bottom:12px;display:block}
+.empty-state p{font-size:13px}
+
+/* Responsive */
+@media(max-width:900px){
+  .modal-body{grid-template-columns:1fr}
+  .modal-preview{display:none}
+  .form-grid.col2,.form-grid.col3{grid-template-columns:1fr}
+  .skill-row{grid-template-columns:1fr 1fr 36px}
+  .skill-row .skill-level-col{display:none}
+}
+@media(max-width:600px){
+  #app{grid-template-columns:1fr;grid-template-rows:56px auto 1fr}
+  .sidebar{flex-direction:row;overflow-x:auto;padding:8px;border-right:none;border-bottom:1px solid var(--brd)}
+  .sidebar-section{display:none}
+  .main{padding:16px}
+  .works-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ Setup Screen ═══ -->
+<div id="setup">
+  <div class="setup-box">
+    <div class="setup-logo">PORT<span>FOLIO</span> ADMIN</div>
+    <div class="setup-sub">GitHubトークンを設定して管理画面を使い始めましょう</div>
+    <div class="setup-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div><a href="https://github.com/settings/tokens/new?description=portfolio-admin&scopes=repo" target="_blank">github.com → Settings → Tokens (classic)</a> を開く</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>「repo」にチェックを入れて Generate token をクリック</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>表示されたトークン（ghp_xxx...）を下に貼り付ける</div>
+      </div>
+    </div>
+    <label>GitHub Personal Access Token</label>
+    <div class="token-input-wrap">
+      <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+      <span class="token-toggle" onclick="toggleTokenVis()"><i class="fa-solid fa-eye"></i></span>
+    </div>
+    <button class="btn-setup" onclick="setupLogin()">
+      <i class="fa-solid fa-arrow-right-to-bracket"></i> 管理画面に入る
+    </button>
+    <div class="setup-error" id="setup-error"></div>
+  </div>
+</div>
+
+<!-- ═══ App Shell ═══ -->
+<div id="app">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-logo">PORT<span>FOLIO</span> ADMIN</div>
+    <div class="topbar-right">
+      <div class="save-status" id="save-status"></div>
+      <a href="../index.html" target="_blank" class="btn-preview">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを見る
+      </a>
+      <button class="btn-logout" onclick="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+      </button>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-section">コンテンツ</div>
+    <div class="nav-item active" data-tab="works" onclick="switchTab('works')">
+      <i class="fa-solid fa-images"></i> 作品・実績
+    </div>
+    <div class="nav-item" data-tab="profile" onclick="switchTab('profile')">
+      <i class="fa-solid fa-user"></i> プロフィール
+    </div>
+    <div class="nav-item" data-tab="skills" onclick="switchTab('skills')">
+      <i class="fa-solid fa-wrench"></i> スキル
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main" id="main-content">
+    <div class="empty-state"><i class="fa-solid fa-spinner fa-spin"></i><p>読み込み中...</p></div>
+  </div>
+</div>
+
+<!-- ═══ Work Edit Modal ═══ -->
+<div class="modal-overlay" id="work-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">作品を追加</div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <!-- Form -->
+      <div class="modal-form" id="modal-form">
+        <div class="field">
+          <label>タイトル <span style="color:var(--red)">*</span></label>
+          <input type="text" id="f-title" placeholder="作品タイトル" oninput="updatePreview()">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="field">
+            <label>カテゴリ <span style="color:var(--red)">*</span></label>
+            <select id="f-category" onchange="updatePreview()">
+              <option value="world">🌍 ワールド</option>
+              <option value="avatar">🎭 アバター</option>
+              <option value="event">🎉 イベント</option>
+              <option value="commission">💼 案件</option>
+              <option value="other">✨ その他</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>制作年月</label>
+            <input type="month" id="f-date" oninput="updatePreview()">
+          </div>
+        </div>
+        <div class="field">
+          <label>説明文</label>
+          <textarea id="f-description" rows="4" placeholder="作品の説明。どんな内容か、こだわりなど自由に書いてください。" oninput="updatePreview()"></textarea>
+        </div>
+        <div class="field">
+          <label>サムネイル画像</label>
+          <div id="img-upload-area">
+            <div class="img-upload" id="img-dropzone"
+                 ondragover="e.preventDefault();this.classList.add('dragover')"
+                 ondragleave="this.classList.remove('dragover')"
+                 ondrop="handleImgDrop(event)">
+              <input type="file" accept="image/*" onchange="handleImgFile(this)">
+              <div class="img-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+              <div class="img-upload-text">クリックまたはドラッグで画像をアップロード<br><span style="font-size:10px">PNG/JPG/GIF・最大5MB</span></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
+              <div style="flex:1;height:1px;background:var(--brd)"></div>
+              <span style="font-size:11px;color:var(--t3)">または</span>
+              <div style="flex:1;height:1px;background:var(--brd)"></div>
+            </div>
+            <input type="text" id="f-thumbnail-url" placeholder="画像URLを直接入力..." style="margin-top:8px" oninput="updatePreview()">
+          </div>
+          <div id="img-preview-container" style="display:none">
+            <div class="img-preview-wrap">
+              <img id="img-preview-img" src="" alt="">
+              <div class="img-clear" onclick="clearImage()"><i class="fa-solid fa-xmark"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>タグ</label>
+          <div class="tags-wrap" id="tags-wrap" onclick="this.querySelector('.tags-input').focus()">
+            <input class="tags-input" type="text" placeholder="入力してEnterで追加" onkeydown="handleTagInput(event)">
+          </div>
+          <div class="hint">例: Unity, Blender, VRChat SDK</div>
+        </div>
+        <div class="field">
+          <label>クライアント名</label>
+          <input type="text" id="f-client" placeholder="依頼元（任意）">
+        </div>
+        <div class="field">
+          <label>リンク</label>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <input type="text" id="f-link-vrchat" placeholder="VRChat リンク">
+            <input type="text" id="f-link-booth" placeholder="BOOTH リンク">
+            <input type="text" id="f-link-twitter" placeholder="Twitter/X リンク">
+            <input type="text" id="f-link-youtube" placeholder="YouTube リンク">
+          </div>
+        </div>
+        <div style="display:flex;gap:20px">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;text-transform:none;font-size:13px;color:var(--t1)">
+            <input type="checkbox" id="f-featured" style="width:auto"> おすすめ（Featured）
+          </label>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;text-transform:none;font-size:13px;color:var(--t1)">
+            <input type="checkbox" id="f-published" checked style="width:auto"> 公開する
+          </label>
+        </div>
+        <input type="hidden" id="f-id">
+      </div>
+      <!-- Preview -->
+      <div class="modal-preview">
+        <div class="modal-preview-title"><i class="fa-solid fa-eye" style="margin-right:5px"></i>プレビュー</div>
+        <div id="card-preview">
+          <div class="preview-card">
+            <div class="preview-thumb" id="prev-thumb"><i class="fa-solid fa-image"></i></div>
+            <div class="preview-body">
+              <div class="preview-meta">
+                <span class="cat-badge" id="prev-cat">ワールド</span>
+                <span class="preview-date" id="prev-date"></span>
+              </div>
+              <div class="preview-title" id="prev-title">タイトル</div>
+              <div class="preview-desc" id="prev-desc"></div>
+              <div class="preview-tags" id="prev-tags"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">キャンセル</button>
+      <button class="btn-save" id="btn-save-work" onclick="saveWork()">
+        <i class="fa-solid fa-floppy-disk"></i> 保存してデプロイ
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─────────────────────────────────
+//  Config
+// ─────────────────────────────────
+const REPO = 'ranze256/portfolio';
+const API  = 'https://api.github.com';
+
+const CATS = {
+  world:      { label:'ワールド',  icon:'🌍', cls:'cat-world' },
+  avatar:     { label:'アバター',  icon:'🎭', cls:'cat-avatar' },
+  event:      { label:'イベント',  icon:'🎉', cls:'cat-event' },
+  commission: { label:'案件',      icon:'💼', cls:'cat-commission' },
+  other:      { label:'その他',    icon:'✨', cls:'cat-other' },
+};
+
+// ─────────────────────────────────
+//  State
+// ─────────────────────────────────
+let token = localStorage.getItem('gh_token') || '';
+let worksData = { works: [] };
+let profileData = {};
+let worksFileSha = '';
+let profileFileSha = '';
+let editingId = null;
+let pendingImageFile = null;
+let currentThumbnail = '';
+let currentTags = [];
+let currentTab = 'works';
+
+// ─────────────────────────────────
+//  Auth
+// ─────────────────────────────────
+function toggleTokenVis() {
+  const inp = document.getElementById('token-input');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+
+async function setupLogin() {
+  const t = document.getElementById('token-input').value.trim();
+  const err = document.getElementById('setup-error');
+  if (!t) { showSetupError('トークンを入力してください'); return; }
+  try {
+    const res = await fetch(`${API}/repos/${REPO}`, {
+      headers: { Authorization: `token ${t}` }
+    });
+    if (!res.ok) throw new Error('認証失敗');
+    localStorage.setItem('gh_token', t);
+    token = t;
+    bootApp();
+  } catch(e) {
+    showSetupError('トークンが正しくないか、リポジトリにアクセスできません');
+  }
+}
+
+function showSetupError(msg) {
+  const el = document.getElementById('setup-error');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function logout() {
+  localStorage.removeItem('gh_token');
+  location.reload();
+}
+
+// ─────────────────────────────────
+//  Boot
+// ─────────────────────────────────
+async function bootApp() {
+  document.getElementById('setup').style.display = 'none';
+  document.getElementById('app').style.display = 'grid';
+  await loadAll();
+  renderTab('works');
+}
+
+async function loadAll() {
+  const [w, p] = await Promise.all([
+    ghGet('content/works.json'),
+    ghGet('content/profile.json'),
+  ]);
+  if (w) {
+    worksFileSha = w.sha;
+    const raw = JSON.parse(atob(w.content.replace(/\n/g,'')));
+    worksData = Array.isArray(raw) ? { works: raw } : raw;
+  }
+  if (p) {
+    profileFileSha = p.sha;
+    profileData = JSON.parse(atob(p.content.replace(/\n/g,'')));
+  }
+}
+
+// ─────────────────────────────────
+//  GitHub API
+// ─────────────────────────────────
+async function ghGet(path) {
+  const res = await fetch(`${API}/repos/${REPO}/contents/${path}`, {
+    headers: { Authorization: `token ${token}` }
+  });
+  if (!res.ok) return null;
+  return res.json();
+}
+
+async function ghPut(path, content, sha, message) {
+  const body = {
+    message,
+    content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))),
+  };
+  if (sha) body.sha = sha;
+  const res = await fetch(`${API}/repos/${REPO}/contents/${path}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `token ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  return res.ok ? data : null;
+}
+
+async function ghUploadImage(file) {
+  const name = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
+  const path = `images/uploads/${name}`;
+  const b64 = await new Promise(resolve => {
+    const r = new FileReader();
+    r.onload = e => resolve(e.target.result.split(',')[1]);
+    r.readAsDataURL(file);
+  });
+  const res = await fetch(`${API}/repos/${REPO}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: `Upload image: ${name}`, content: b64 }),
+  });
+  if (!res.ok) return null;
+  return path;
+}
+
+// ─────────────────────────────────
+//  Tabs
+// ─────────────────────────────────
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.tab === tab);
+  });
+  renderTab(tab);
+}
+
+function renderTab(tab) {
+  if (tab === 'works')   renderWorks();
+  if (tab === 'profile') renderProfile();
+  if (tab === 'skills')  renderSkills();
+}
+
+// ─────────────────────────────────
+//  Works tab
+// ─────────────────────────────────
+function renderWorks() {
+  const works = worksData.works || [];
+  const main = document.getElementById('main-content');
+  if (works.length === 0) {
+    main.innerHTML = `
+      <div class="page-header">
+        <div class="page-title">作品・実績</div>
+        <button class="btn-add" onclick="openAddModal()"><i class="fa-solid fa-plus"></i> 追加</button>
+      </div>
+      <div class="empty-state">
+        <i class="fa-solid fa-images"></i>
+        <p>まだ作品がありません。「追加」ボタンから最初の作品を登録しましょう。</p>
+      </div>`;
+    return;
+  }
+  main.innerHTML = `
+    <div class="page-header">
+      <div class="page-title">作品・実績 <span style="font-size:14px;color:var(--t3);font-weight:400">${works.length}件</span></div>
+      <button class="btn-add" onclick="openAddModal()"><i class="fa-solid fa-plus"></i> 追加</button>
+    </div>
+    <div class="works-grid">
+      ${works.map(w => workThumbCard(w)).join('')}
+    </div>`;
+}
+
+function workThumbCard(w) {
+  const cat = CATS[w.category] || CATS.other;
+  const thumb = w.thumbnail
+    ? `<div class="card-img"><img src="../${w.thumbnail}" alt="" onerror="this.parentElement.innerHTML='${cat.icon}'"></div>`
+    : `<div class="card-img">${cat.icon}</div>`;
+  const date = w.date ? w.date.replace('-', '/') : '';
+  return `
+    <div class="work-thumb-card">
+      ${!w.published ? '<div class="unpublished-mark">非公開</div>' : ''}
+      ${thumb}
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="cat-badge ${cat.cls}">${cat.icon} ${cat.label}</span>
+          ${w.featured ? '<span style="font-size:11px;color:var(--yellow)">⭐</span>' : ''}
+          <span class="card-date" style="margin-left:auto">${date}</span>
+        </div>
+        <div class="card-title">${w.title}</div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-edit" onclick="openEditModal('${w.id}')"><i class="fa-solid fa-pen"></i> 編集</button>
+        <button class="btn-delete" onclick="deleteWork('${w.id}')"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>`;
+}
+
+// ─────────────────────────────────
+//  Work Modal
+// ─────────────────────────────────
+function openAddModal() {
+  editingId = null;
+  pendingImageFile = null;
+  currentThumbnail = '';
+  currentTags = [];
+  document.getElementById('modal-title').textContent = '作品を追加';
+  clearModalForm();
+  document.getElementById('f-published').checked = true;
+  openModal();
+}
+
+function openEditModal(id) {
+  const w = (worksData.works || []).find(x => x.id === id);
+  if (!w) return;
+  editingId = id;
+  pendingImageFile = null;
+  currentThumbnail = w.thumbnail || '';
+  currentTags = [...(w.tags || [])];
+
+  document.getElementById('modal-title').textContent = '作品を編集';
+  document.getElementById('f-id').value = w.id;
+  document.getElementById('f-title').value = w.title || '';
+  document.getElementById('f-category').value = w.category || 'world';
+  document.getElementById('f-date').value = w.date ? w.date.replace('/', '-') : '';
+  document.getElementById('f-description').value = w.description || '';
+  document.getElementById('f-client').value = w.client || '';
+  document.getElementById('f-link-vrchat').value = (w.links||{}).vrchat || '';
+  document.getElementById('f-link-booth').value = (w.links||{}).booth || '';
+  document.getElementById('f-link-twitter').value = (w.links||{}).twitter || '';
+  document.getElementById('f-link-youtube').value = (w.links||{}).youtube || '';
+  document.getElementById('f-featured').checked = !!w.featured;
+  document.getElementById('f-published').checked = w.published !== false;
+
+  // thumbnail
+  if (w.thumbnail) {
+    showImgPreview('../' + w.thumbnail);
+  } else {
+    document.getElementById('f-thumbnail-url').value = '';
+    resetImgArea();
+  }
+
+  renderTagPills();
+  openModal();
+  updatePreview();
+}
+
+function openModal() {
+  document.getElementById('work-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  updatePreview();
+}
+
+function closeModal() {
+  document.getElementById('work-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function clearModalForm() {
+  ['f-title','f-description','f-client','f-link-vrchat','f-link-booth',
+   'f-link-twitter','f-link-youtube','f-thumbnail-url','f-id'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('f-category').value = 'world';
+  document.getElementById('f-date').value = '';
+  document.getElementById('f-featured').checked = false;
+  document.getElementById('f-published').checked = true;
+  currentTags = [];
+  currentThumbnail = '';
+  renderTagPills();
+  resetImgArea();
+  updatePreview();
+}
+
+async function saveWork() {
+  const title = document.getElementById('f-title').value.trim();
+  if (!title) { toast('タイトルを入力してください', 'error'); return; }
+
+  const btn = document.getElementById('btn-save-work');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 保存中...';
+  setSaveStatus('saving', '保存中...');
+
+  try {
+    // Upload image if pending
+    let thumbnailPath = currentThumbnail;
+    if (pendingImageFile) {
+      const uploaded = await ghUploadImage(pendingImageFile);
+      if (uploaded) thumbnailPath = uploaded;
+    }
+
+    const date = document.getElementById('f-date').value;
+    const work = {
+      id: editingId || generateId(title),
+      title,
+      category: document.getElementById('f-category').value,
+      thumbnail: thumbnailPath || '',
+      description: document.getElementById('f-description').value.trim(),
+      tags: [...currentTags],
+      date: date ? date.slice(0,7) : '',
+      links: {
+        vrchat:  document.getElementById('f-link-vrchat').value.trim(),
+        booth:   document.getElementById('f-link-booth').value.trim(),
+        twitter: document.getElementById('f-link-twitter').value.trim(),
+        youtube: document.getElementById('f-link-youtube').value.trim(),
+      },
+      client:    document.getElementById('f-client').value.trim(),
+      featured:  document.getElementById('f-featured').checked,
+      published: document.getElementById('f-published').checked,
+    };
+
+    const works = [...(worksData.works || [])];
+    if (editingId) {
+      const idx = works.findIndex(w => w.id === editingId);
+      if (idx >= 0) works[idx] = work; else works.push(work);
+    } else {
+      works.push(work);
+    }
+    worksData.works = works;
+
+    const result = await ghPut('content/works.json', worksData, worksFileSha,
+      `${editingId ? 'Update' : 'Add'} work: ${title}`);
+    if (!result) throw new Error('GitHub保存失敗');
+    worksFileSha = result.content.sha;
+
+    closeModal();
+    renderWorks();
+    setSaveStatus('saved', '保存済み ✓');
+    toast(editingId ? '作品を更新しました' : '作品を追加しました', 'success');
+  } catch(e) {
+    setSaveStatus('error', 'エラー');
+    toast('保存に失敗しました: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> 保存してデプロイ';
+  }
+}
+
+async function deleteWork(id) {
+  const w = (worksData.works || []).find(x => x.id === id);
+  if (!w) return;
+  if (!confirm(`「${w.title}」を削除しますか？`)) return;
+
+  setSaveStatus('saving', '削除中...');
+  try {
+    worksData.works = (worksData.works || []).filter(x => x.id !== id);
+    const result = await ghPut('content/works.json', worksData, worksFileSha, `Delete work: ${w.title}`);
+    if (!result) throw new Error();
+    worksFileSha = result.content.sha;
+    renderWorks();
+    setSaveStatus('saved', '削除済み ✓');
+    toast('作品を削除しました', 'success');
+  } catch {
+    setSaveStatus('error', 'エラー');
+    toast('削除に失敗しました', 'error');
+  }
+}
+
+// ─────────────────────────────────
+//  Image handling
+// ─────────────────────────────────
+function handleImgFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { toast('5MB以上の画像は使用できません', 'error'); return; }
+  pendingImageFile = file;
+  currentThumbnail = '';
+  const url = URL.createObjectURL(file);
+  showImgPreview(url);
+  updatePreview();
+}
+
+function handleImgDrop(e) {
+  e.preventDefault();
+  document.getElementById('img-dropzone').classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    pendingImageFile = file;
+    currentThumbnail = '';
+    showImgPreview(URL.createObjectURL(file));
+    updatePreview();
+  }
+}
+
+function showImgPreview(url) {
+  document.getElementById('img-upload-area').style.display = 'none';
+  const wrap = document.getElementById('img-preview-container');
+  wrap.style.display = 'block';
+  document.getElementById('img-preview-img').src = url;
+  currentThumbnail = url.startsWith('blob:') ? currentThumbnail : url.replace('../','');
+  updatePreview();
+}
+
+function clearImage() {
+  pendingImageFile = null;
+  currentThumbnail = '';
+  resetImgArea();
+  updatePreview();
+}
+
+function resetImgArea() {
+  document.getElementById('img-upload-area').style.display = 'block';
+  document.getElementById('img-preview-container').style.display = 'none';
+  document.getElementById('img-preview-img').src = '';
+  document.getElementById('f-thumbnail-url').value = '';
+}
+
+// URL input for thumbnail
+document.getElementById('f-thumbnail-url').addEventListener('input', function() {
+  const url = this.value.trim();
+  if (url) {
+    pendingImageFile = null;
+    currentThumbnail = url;
+    showImgPreview(url);
+  }
+});
+
+// ─────────────────────────────────
+//  Tags
+// ─────────────────────────────────
+function handleTagInput(e) {
+  if (e.key === 'Enter' || e.key === ',') {
+    e.preventDefault();
+    const val = e.target.value.trim().replace(/,$/, '');
+    if (val && !currentTags.includes(val)) {
+      currentTags.push(val);
+      renderTagPills();
+      updatePreview();
+    }
+    e.target.value = '';
+  }
+  if (e.key === 'Backspace' && !e.target.value && currentTags.length) {
+    currentTags.pop();
+    renderTagPills();
+    updatePreview();
+  }
+}
+
+function removeTag(tag) {
+  currentTags = currentTags.filter(t => t !== tag);
+  renderTagPills();
+  updatePreview();
+}
+
+function renderTagPills() {
+  const wrap = document.getElementById('tags-wrap');
+  const inp = wrap.querySelector('.tags-input');
+  wrap.querySelectorAll('.tag-pill').forEach(el => el.remove());
+  currentTags.forEach(tag => {
+    const pill = document.createElement('span');
+    pill.className = 'tag-pill';
+    pill.innerHTML = `${tag}<button onclick="removeTag('${tag}')" type="button">×</button>`;
+    wrap.insertBefore(pill, inp);
+  });
+}
+
+// ─────────────────────────────────
+//  Preview
+// ─────────────────────────────────
+function updatePreview() {
+  const title = document.getElementById('f-title').value || 'タイトル';
+  const cat   = document.getElementById('f-category').value;
+  const date  = document.getElementById('f-date').value;
+  const desc  = document.getElementById('f-description').value;
+  const info  = CATS[cat] || CATS.other;
+
+  document.getElementById('prev-title').textContent = title;
+  document.getElementById('prev-date').textContent = date ? date.replace('-','/') : '';
+  document.getElementById('prev-desc').textContent = desc;
+
+  const catBadge = document.getElementById('prev-cat');
+  catBadge.textContent = `${info.icon} ${info.label}`;
+  catBadge.className = `cat-badge ${info.cls}`;
+
+  const thumbEl = document.getElementById('prev-thumb');
+  const imgPreviewSrc = document.getElementById('img-preview-img').src;
+  const urlInput = document.getElementById('f-thumbnail-url').value.trim();
+  const src = imgPreviewSrc || urlInput;
+  if (src && !src.startsWith('data:')) {
+    thumbEl.innerHTML = `<img src="${src}" alt="" onerror="this.parentElement.innerHTML='${info.icon}'">`;
+  } else {
+    thumbEl.innerHTML = info.icon;
+  }
+
+  const tagsEl = document.getElementById('prev-tags');
+  tagsEl.innerHTML = currentTags.map(t =>
+    `<span class="preview-tag">${t}</span>`
+  ).join('');
+}
+
+// ─────────────────────────────────
+//  Profile tab
+// ─────────────────────────────────
+function renderProfile() {
+  const p = profileData;
+  const s = p.social || {};
+  document.getElementById('main-content').innerHTML = `
+    <div class="page-header">
+      <div class="page-title">プロフィール</div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">基本情報</div>
+      <div class="form-grid">
+        <div class="field"><label>表示名</label><input id="p-name" value="${p.name||''}"></div>
+        <div class="field"><label>VRChatユーザー名</label><input id="p-vrchat-name" value="${p.vrchat_username||''}"></div>
+        <div class="field"><label>キャッチコピー</label><input id="p-tagline" value="${p.tagline||''}" placeholder="VRChat Creator | ワールド・アバター制作"></div>
+        <div class="field"><label>自己紹介文</label><textarea id="p-bio" rows="5">${p.bio||''}</textarea></div>
+        <div class="field">
+          <label>依頼受付状況</label>
+          <select id="p-commission">
+            <option value="open"   ${p.commission_status==='open'   ?'selected':''}>受付中 ✅</option>
+            <option value="closed" ${p.commission_status==='closed' ?'selected':''}>停止中 ❌</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>アバター画像パス</label>
+          <input id="p-avatar" value="${p.avatar_image||''}" placeholder="images/avatar.jpg">
+          <div class="hint">images/ フォルダに画像を置いてパスを入力してください</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">SNS・リンク</div>
+      <div class="form-grid col2">
+        <div class="field"><label><i class="fa-solid fa-vr-cardboard" style="margin-right:6px;color:var(--red)"></i>VRChat URL</label><input id="s-vrchat" value="${s.vrchat||''}" placeholder="https://vrchat.com/home/user/usr_..."></div>
+        <div class="field"><label><i class="fa-brands fa-x-twitter" style="margin-right:6px;color:var(--red)"></i>Twitter/X URL</label><input id="s-twitter" value="${s.twitter||''}"></div>
+        <div class="field"><label><i class="fa-solid fa-store" style="margin-right:6px;color:var(--red)"></i>BOOTH URL</label><input id="s-booth" value="${s.booth||''}"></div>
+        <div class="field"><label><i class="fa-brands fa-github" style="margin-right:6px;color:var(--red)"></i>GitHub URL</label><input id="s-github" value="${s.github||''}"></div>
+        <div class="field"><label><i class="fa-brands fa-discord" style="margin-right:6px;color:var(--red)"></i>Discord</label><input id="s-discord" value="${s.discord||''}" placeholder="username or server URL"></div>
+        <div class="field"><label><i class="fa-brands fa-youtube" style="margin-right:6px;color:var(--red)"></i>YouTube URL</label><input id="s-youtube" value="${s.youtube||''}"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">統計（数字カード）</div>
+      <div id="stats-list" style="display:flex;flex-direction:column;gap:8px">
+        ${(p.stats||[]).map((s,i) => `
+          <div class="stat-row" data-i="${i}">
+            <input class="stat-emoji-btn" value="${s.icon||'📊'}" id="stat-icon-${i}" style="text-align:center;padding:8px 4px">
+            <input value="${s.label||''}" id="stat-label-${i}" placeholder="ラベル">
+            <input value="${s.value||'0'}" id="stat-value-${i}" placeholder="数値">
+            <input value="${s.suffix||''}" id="stat-suffix-${i}" placeholder="単位">
+            <button class="btn-remove" onclick="removeStat(${i})"><i class="fa-solid fa-minus"></i></button>
+          </div>`).join('')}
+      </div>
+      <button class="btn-add-skill" onclick="addStat()"><i class="fa-solid fa-plus"></i> 統計を追加</button>
+    </div>
+
+    <button class="btn-save-section" onclick="saveProfile()">
+      <i class="fa-solid fa-floppy-disk"></i> 保存してデプロイ
+    </button>`;
+}
+
+async function saveProfile() {
+  setSaveStatus('saving','保存中...');
+  try {
+    const stats = [];
+    document.querySelectorAll('.stat-row').forEach(row => {
+      const i = row.dataset.i;
+      stats.push({
+        icon:   document.getElementById(`stat-icon-${i}`).value,
+        label:  document.getElementById(`stat-label-${i}`).value,
+        value:  document.getElementById(`stat-value-${i}`).value,
+        suffix: document.getElementById(`stat-suffix-${i}`).value,
+      });
+    });
+
+    profileData = {
+      ...profileData,
+      name:              document.getElementById('p-name').value.trim(),
+      vrchat_username:   document.getElementById('p-vrchat-name').value.trim(),
+      tagline:           document.getElementById('p-tagline').value.trim(),
+      bio:               document.getElementById('p-bio').value.trim(),
+      commission_status: document.getElementById('p-commission').value,
+      avatar_image:      document.getElementById('p-avatar').value.trim(),
+      social: {
+        vrchat:   document.getElementById('s-vrchat').value.trim(),
+        twitter:  document.getElementById('s-twitter').value.trim(),
+        booth:    document.getElementById('s-booth').value.trim(),
+        github:   document.getElementById('s-github').value.trim(),
+        discord:  document.getElementById('s-discord').value.trim(),
+        youtube:  document.getElementById('s-youtube').value.trim(),
+      },
+      stats,
+    };
+
+    const result = await ghPut('content/profile.json', profileData, profileFileSha, 'Update profile');
+    if (!result) throw new Error();
+    profileFileSha = result.content.sha;
+    setSaveStatus('saved','保存済み ✓');
+    toast('プロフィールを保存しました', 'success');
+  } catch {
+    setSaveStatus('error','エラー');
+    toast('保存に失敗しました', 'error');
+  }
+}
+
+function addStat() {
+  if (!profileData.stats) profileData.stats = [];
+  profileData.stats.push({ icon:'📊', label:'新しい統計', value:'0', suffix:'' });
+  renderProfile();
+}
+function removeStat(i) {
+  profileData.stats.splice(i, 1);
+  renderProfile();
+}
+
+// ─────────────────────────────────
+//  Skills tab
+// ─────────────────────────────────
+function renderSkills() {
+  const skills = profileData.skills || [];
+  document.getElementById('main-content').innerHTML = `
+    <div class="page-header">
+      <div class="page-title">スキル・使用ツール</div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">スキル一覧</div>
+      <div class="skill-list" id="skill-list">
+        ${skills.map((s,i) => `
+          <div class="skill-row" data-i="${i}">
+            <input value="${s.name||''}" id="sk-name-${i}" placeholder="スキル名 (例: Unity)">
+            <input value="${s.category||''}" id="sk-cat-${i}" placeholder="カテゴリ (例: 3D / ゲームエンジン)" class="skill-level-col">
+            <select id="sk-level-${i}">
+              <option value="90" ${s.level>=85?'selected':''}>★★★ 得意</option>
+              <option value="70" ${s.level>=60&&s.level<85?'selected':''}>★★☆ 中級</option>
+              <option value="45" ${s.level>=30&&s.level<60?'selected':''}>★☆☆ 初級</option>
+              <option value="20" ${s.level<30?'selected':''}>☆☆☆ 学習中</option>
+            </select>
+            <button class="btn-remove" onclick="removeSkill(${i})"><i class="fa-solid fa-minus"></i></button>
+          </div>`).join('')}
+      </div>
+      <button class="btn-add-skill" onclick="addSkill()"><i class="fa-solid fa-plus"></i> スキルを追加</button>
+    </div>
+    <button class="btn-save-section" onclick="saveSkills()">
+      <i class="fa-solid fa-floppy-disk"></i> 保存してデプロイ
+    </button>`;
+}
+
+async function saveSkills() {
+  setSaveStatus('saving','保存中...');
+  try {
+    const skills = [];
+    document.querySelectorAll('.skill-row').forEach(row => {
+      const i = row.dataset.i;
+      skills.push({
+        name:     document.getElementById(`sk-name-${i}`).value.trim(),
+        category: document.getElementById(`sk-cat-${i}`).value.trim(),
+        level:    parseInt(document.getElementById(`sk-level-${i}`).value),
+      });
+    });
+    profileData.skills = skills;
+    const result = await ghPut('content/profile.json', profileData, profileFileSha, 'Update skills');
+    if (!result) throw new Error();
+    profileFileSha = result.content.sha;
+    setSaveStatus('saved','保存済み ✓');
+    toast('スキルを保存しました', 'success');
+  } catch {
+    setSaveStatus('error','エラー');
+    toast('保存に失敗しました', 'error');
+  }
+}
+
+function addSkill() {
+  if (!profileData.skills) profileData.skills = [];
+  profileData.skills.push({ name:'', category:'', level:70 });
+  renderSkills();
+}
+function removeSkill(i) {
+  profileData.skills.splice(i, 1);
+  renderSkills();
+}
+
+// ─────────────────────────────────
+//  Utilities
+// ─────────────────────────────────
+function generateId(title) {
+  return title.toLowerCase()
+    .replace(/[^\w\s-]/g,'').replace(/\s+/g,'-')
+    .slice(0,40) + '-' + Date.now().toString(36);
+}
+
+function setSaveStatus(type, msg) {
+  const el = document.getElementById('save-status');
+  el.className = 'save-status ' + type;
+  const icons = { saving:'fa-spinner fa-spin', saved:'fa-check', error:'fa-triangle-exclamation' };
+  el.innerHTML = `<i class="fa-solid ${icons[type]||''}"></i> ${msg}`;
+  if (type === 'saved') setTimeout(() => { el.textContent = ''; el.className = 'save-status'; }, 3000);
+}
+
+function toast(msg, type='success') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = `toast ${type} show`;
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ─────────────────────────────────
+//  Init
+// ─────────────────────────────────
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+if (token) {
+  bootApp();
+}
+</script>
+</body>
+</html>
