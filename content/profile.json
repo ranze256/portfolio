@@ -47,5 +47,37 @@
     }
   ],
   "commission_status": "open",
-  "commission_message": "現在お仕事のご依頼を受け付けています。お気軽にDMください。"
+  "commission_message": "現在お仕事のご依頼を受け付けています。お気軽にDMください。",
+  "skills": [
+    {
+      "name": "blender",
+      "category": "",
+      "level": 70
+    },
+    {
+      "name": "Unity",
+      "category": "",
+      "level": 70
+    },
+    {
+      "name": "Adobe After Effects",
+      "category": "",
+      "level": 70
+    },
+    {
+      "name": "Adobe Photoshop",
+      "category": "",
+      "level": 70
+    },
+    {
+      "name": "Adobe illustrator",
+      "category": "",
+      "level": 70
+    },
+    {
+      "name": "",
+      "category": "",
+      "level": 70
+    }
+  ]
 }
