@@ -499,13 +499,23 @@ async function loadAll() {
   ]);
   if (w) {
     worksFileSha = w.sha;
-    const raw = JSON.parse(atob(w.content.replace(/\n/g,'')));
+    const raw = JSON.parse(b64DecodeUtf8(w.content));
     worksData = Array.isArray(raw) ? { works: raw } : raw;
   }
   if (p) {
     profileFileSha = p.sha;
-    profileData = JSON.parse(atob(p.content.replace(/\n/g,'')));
+    profileData = JSON.parse(b64DecodeUtf8(p.content));
   }
+}
+
+// ─────────────────────────────────
+//  UTF-8 base64 decode (atob alone breaks Japanese)
+// ─────────────────────────────────
+function b64DecodeUtf8(str) {
+  const binary = atob(str.replace(/\n/g, ''));
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder('utf-8').decode(bytes);
 }
 
 // ─────────────────────────────────
