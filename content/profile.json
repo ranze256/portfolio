@@ -26,6 +26,12 @@
       "label": "案件実績",
       "value": "20",
       "suffix": "件"
+    },
+    {
+      "icon": "📊",
+      "label": "制作ロゴ",
+      "value": "4",
+      "suffix": "個"
     }
   ],
   "commission_status": "open",
