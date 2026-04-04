@@ -547,9 +547,9 @@ async function ghPut(path, content, sha, message) {
   return res.ok ? data : null;
 }
 
-async function ghUploadImage(file) {
+async function ghUploadImage(file, fixedPath = null) {
   const name = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
-  const path = `images/uploads/${name}`;
+  const path = fixedPath || `images/uploads/${name}`;
   const b64 = await new Promise(resolve => {
     const r = new FileReader();
     r.onload = e => resolve(e.target.result.split(',')[1]);
@@ -829,6 +829,33 @@ function showImgPreview(url) {
   updatePreview();
 }
 
+// Avatar upload
+let pendingAvatarFile = null;
+function handleAvatarFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  pendingAvatarFile = file;
+  const url = URL.createObjectURL(file);
+  const wrap = document.getElementById('avatar-preview-wrap');
+  const dropzone = document.getElementById('avatar-dropzone');
+  if (wrap) { wrap.style.display = 'block'; document.getElementById('avatar-preview-img').src = url; }
+  if (dropzone) dropzone.style.display = 'none';
+}
+function handleAvatarDrop(e) {
+  e.preventDefault();
+  document.getElementById('avatar-dropzone').classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) handleAvatarFile({ files: [file] });
+}
+function clearAvatar() {
+  pendingAvatarFile = null;
+  document.getElementById('p-avatar').value = '';
+  const wrap = document.getElementById('avatar-preview-wrap');
+  if (wrap) wrap.style.display = 'none';
+  const dz = document.getElementById('avatar-dropzone');
+  if (dz) dz.style.display = 'block';
+}
+
 function clearImage() {
   pendingImageFile = null;
   currentThumbnail = '';
@@ -952,9 +979,25 @@ function renderProfile() {
           </select>
         </div>
         <div class="field">
-          <label>アバター画像パス</label>
-          <input id="p-avatar" value="${p.avatar_image||''}" placeholder="images/avatar.jpg">
-          <div class="hint">images/ フォルダに画像を置いてパスを入力してください</div>
+          <label>アバター画像</label>
+          ${p.avatar_image ? `
+            <div class="img-preview-wrap" id="avatar-preview-wrap" style="max-width:160px;aspect-ratio:1;border-radius:50%;overflow:hidden;margin-bottom:8px">
+              <img src="../${p.avatar_image}" alt="" style="width:100%;height:100%;object-fit:cover">
+              <div class="img-clear" onclick="clearAvatar()"><i class="fa-solid fa-xmark"></i></div>
+            </div>` : `
+            <div id="avatar-preview-wrap" style="display:none;max-width:160px;aspect-ratio:1;border-radius:50%;overflow:hidden;margin-bottom:8px" class="img-preview-wrap">
+              <img id="avatar-preview-img" src="" alt="" style="width:100%;height:100%;object-fit:cover">
+              <div class="img-clear" onclick="clearAvatar()"><i class="fa-solid fa-xmark"></i></div>
+            </div>`}
+          <div class="img-upload" id="avatar-dropzone" style="max-width:280px"
+               ondragover="event.preventDefault();this.classList.add('dragover')"
+               ondragleave="this.classList.remove('dragover')"
+               ondrop="handleAvatarDrop(event)">
+            <input type="file" accept="image/*" onchange="handleAvatarFile(this)">
+            <div class="img-upload-icon"><i class="fa-solid fa-user-circle"></i></div>
+            <div class="img-upload-text">クリックまたはドラッグでアップロード<br><span style="font-size:10px">正方形推奨・PNG/JPG</span></div>
+          </div>
+          <input type="hidden" id="p-avatar" value="${p.avatar_image||''}">
         </div>
       </div>
     </div>
@@ -994,6 +1037,13 @@ function renderProfile() {
 async function saveProfile() {
   setSaveStatus('saving','保存中...');
   try {
+    // Upload avatar if pending
+    if (pendingAvatarFile) {
+      const path = await ghUploadImage(pendingAvatarFile, 'images/avatar' +
+        pendingAvatarFile.name.slice(pendingAvatarFile.name.lastIndexOf('.')));
+      if (path) document.getElementById('p-avatar').value = path;
+      pendingAvatarFile = null;
+    }
     const stats = [];
     document.querySelectorAll('.stat-row').forEach(row => {
       const i = row.dataset.i;

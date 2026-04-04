@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>使い方マニュアル | Portfolio Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:    #1e1e1e;
+  --bg1:   #272727;
+  --bg2:   #303030;
+  --red:   #E8001D;
+  --t1:    #ffffff;
+  --t2:    #aaaaaa;
+  --t3:    #666666;
+  --brd:   rgba(255,255,255,0.08);
+  --green: #22c55e;
+  --blue:  #3b82f6;
+  --yellow:#f59e0b;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:'Inter','Noto Sans JP',sans-serif;line-height:1.7;font-size:15px}
+a{color:var(--red)}
+
+/* Layout */
+.wrapper{max-width:900px;margin:0 auto;padding:60px 24px 100px}
+
+/* Header */
+.hero{text-align:center;padding:60px 0 48px;border-bottom:1px solid var(--brd);margin-bottom:60px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(232,0,29,.12);border:1px solid rgba(232,0,29,.3);border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:20px}
+.hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;letter-spacing:-.03em;margin-bottom:12px}
+.hero h1 span{color:var(--red)}
+.hero p{color:var(--t2);font-size:16px;max-width:500px;margin:0 auto}
+
+/* TOC */
+.toc{background:var(--bg1);border:1px solid var(--brd);border-radius:12px;padding:28px 32px;margin-bottom:56px}
+.toc h2{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:16px}
+.toc ol{padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.toc li a{color:var(--t2);font-size:14px;font-weight:500;transition:color .2s}
+.toc li a:hover{color:var(--t1)}
+
+/* Section */
+.section{margin-bottom:72px}
+.section-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--red);color:#fff;border-radius:8px;font-size:14px;font-weight:800;margin-bottom:14px}
+.section h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.section .lead{color:var(--t2);margin-bottom:28px;font-size:14px}
+
+/* Steps */
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:grid;grid-template-columns:48px 1fr;gap:0 20px;position:relative}
+.step:not(:last-child)::before{content:'';position:absolute;left:23px;top:48px;bottom:0;width:2px;background:var(--brd)}
+.step-num{width:48px;height:48px;background:var(--bg2);border:2px solid var(--brd);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--t2);flex-shrink:0;z-index:1}
+.step.done .step-num{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.4);color:var(--green)}
+.step-body{padding:10px 0 32px}
+.step-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.step-desc{color:var(--t2);font-size:14px;line-height:1.75}
+.step-img{margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid var(--brd)}
+
+/* Mock UI components */
+.mock{background:var(--bg1);border:1px solid var(--brd);border-radius:10px;overflow:hidden;font-size:13px}
+.mock-bar{background:var(--bg2);padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--brd)}
+.mock-dots{display:flex;gap:5px}
+.mock-dot{width:10px;height:10px;border-radius:50%}
+.mock-url{flex:1;background:var(--bg);border-radius:4px;padding:4px 12px;font-size:11px;color:var(--t3)}
+.mock-body{padding:20px}
+.mock-grid{display:grid;grid-template-columns:160px 1fr;min-height:160px}
+.mock-sidebar{background:var(--bg2);padding:12px 8px;border-right:1px solid var(--brd);display:flex;flex-direction:column;gap:4px}
+.mock-nav{padding:8px 10px;border-radius:6px;font-size:12px;color:var(--t3);display:flex;align-items:center;gap:7px}
+.mock-nav.active{background:rgba(232,0,29,.12);color:var(--red);font-weight:600}
+.mock-main{padding:16px}
+.mock-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mock-card{background:var(--bg2);border:1px solid var(--brd);border-radius:6px;overflow:hidden}
+.mock-card-img{aspect-ratio:16/9;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:20px}
+.mock-card-body{padding:8px}
+.mock-card-title{font-size:11px;font-weight:600;margin-bottom:3px}
+.mock-card-badge{display:inline-block;padding:1px 6px;border-radius:3px;font-size:9px;font-weight:700;background:rgba(232,0,29,.15);color:var(--red);margin-bottom:4px}
+.mock-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:var(--red);color:#fff;border-radius:5px;font-size:11px;font-weight:700}
+.mock-btn.ghost{background:var(--bg2);border:1px solid var(--brd);color:var(--t2)}
+.mock-form{display:flex;flex-direction:column;gap:10px}
+.mock-field label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);display:block;margin-bottom:4px}
+.mock-field input,.mock-field textarea{width:100%;background:var(--bg2);border:1px solid var(--brd);border-radius:5px;padding:7px 10px;font-size:12px;color:var(--t2)}
+.mock-field textarea{height:60px;resize:none}
+.mock-upload{border:2px dashed var(--brd);border-radius:6px;padding:14px;text-align:center;color:var(--t3);font-size:11px}
+.mock-upload-icon{font-size:20px;margin-bottom:4px}
+
+/* Callout */
+.callout{display:flex;gap:14px;padding:16px 20px;border-radius:8px;margin:20px 0;font-size:13px;line-height:1.65}
+.callout.tip{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);color:#93c5fd}
+.callout.warn{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:#fcd34d}
+.callout.ok{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#86efac}
+.callout-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.callout strong{display:block;font-weight:700;margin-bottom:3px}
+
+/* Badge inline */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.badge.red{background:rgba(232,0,29,.15);color:var(--red)}
+.badge.green{background:rgba(34,197,94,.15);color:var(--green)}
+.badge.blue{background:rgba(59,130,246,.15);color:#93c5fd}
+.badge.yellow{background:rgba(245,158,11,.15);color:var(--yellow)}
+
+/* Keyboard key */
+kbd{display:inline-block;padding:2px 7px;background:var(--bg2);border:1px solid var(--brd);border-radius:4px;font-size:12px;font-family:monospace}
+
+/* Flow diagram */
+.flow{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin:20px 0}
+.flow-box{background:var(--bg1);border:1px solid var(--brd);border-radius:8px;padding:12px 16px;font-size:13px;font-weight:600;text-align:center;min-width:110px}
+.flow-box .flow-icon{font-size:20px;display:block;margin-bottom:5px}
+.flow-box.red{border-color:rgba(232,0,29,.4);background:rgba(232,0,29,.08);color:var(--t1)}
+.flow-box.green{border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.08);color:var(--t1)}
+.flow-arr{color:var(--t3);font-size:20px;padding:0 8px}
+
+/* Highlight box */
+.hibox{background:var(--bg1);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:16px 20px;margin:16px 0;font-size:14px;color:var(--t2)}
+.hibox strong{color:var(--t1)}
+
+/* Table */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+th{background:var(--bg2);padding:10px 14px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);border-bottom:1px solid var(--brd)}
+td{padding:10px 14px;border-bottom:1px solid var(--brd);color:var(--t2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+
+/* Divider */
+hr{border:none;border-top:1px solid var(--brd);margin:56px 0}
+
+/* Footer */
+.footer{text-align:center;color:var(--t3);font-size:12px;padding-top:40px;border-top:1px solid var(--brd)}
+
+@media(max-width:640px){
+  .mock-grid{grid-template-columns:1fr}
+  .mock-sidebar{flex-direction:row;overflow-x:auto}
+  .mock-card-grid{grid-template-columns:1fr 1fr}
+  .flow{flex-direction:column}
+  .flow-arr{transform:rotate(90deg)}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">📖 使い方マニュアル</div>
+    <h1>Portfolio <span>Admin</span><br>完全ガイド</h1>
+    <p>ポートフォリオサイトの更新・管理方法をまとめたマニュアルです。</p>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#s1">管理画面の開き方</a></li>
+      <li><a href="#s2">作品を追加する</a></li>
+      <li><a href="#s3">作品を編集・削除する</a></li>
+      <li><a href="#s4">プロフィールを編集する</a></li>
+      <li><a href="#s5">アバター画像をアップロードする</a></li>
+      <li><a href="#s6">スキルを管理する</a></li>
+      <li><a href="#s7">保存後の反映について</a></li>
+      <li><a href="#s8">よくある質問</a></li>
+    </ol>
+  </div>
+
+  <!-- ─────────────────────────────── -->
+  <!-- 1. 開き方 -->
+  <!-- ─────────────────────────────── -->
+  <div class="section" id="s1">
+    <div class="section-num">1</div>
+    <h2>管理画面の開き方</h2>
+    <p class="lead">ブラウザから直接アクセスできます。アプリのインストール不要。</p>
+
+    <div class="steps">
+      <div class="step done">
+        <div class="step-num">①</div>
+        <div class="step-body">
+          <div class="step-title">管理画面URLにアクセス</div>
+          <div class="step-desc">
+            ブラウザで以下のURLを開きます：<br>
+            <code style="background:var(--bg2);padding:6px 12px;border-radius:5px;display:inline-block;margin-top:8px;font-size:13px;color:var(--red)">https://ranze-portfolio.netlify.app/admin/panel.html</code>
+          </div>
+          <div class="callout tip" style="margin-top:14px">
+            <div class="callout-icon">💡</div>
+            <div><strong>ブックマーク推奨</strong>このURLをブラウザのブックマークに登録しておくと毎回アクセスが楽になります。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">②</div>
+        <div class="step-body">
+          <div class="step-title">GitHubトークンを入力してログイン</div>
+          <div class="step-desc">初回のみトークン入力が必要です。一度ログインすると次回から自動でログインされます。</div>
+          <div class="step-img">
+            <div class="mock">
+              <div class="mock-bar">
+                <div class="mock-dots"><div class="mock-dot" style="background:#ff5f56"></div><div class="mock-dot" style="background:#ffbd2e"></div><div class="mock-dot" style="background:#27c93f"></div></div>
+                <div class="mock-url">ranze-portfolio.netlify.app/admin/panel.html</div>
+              </div>
+              <div class="mock-body" style="max-width:360px;margin:0 auto;padding:32px 20px">
+                <div style="font-size:16px;font-weight:800;margin-bottom:4px">PORT<span style="color:var(--red)">FOLIO</span> ADMIN</div>
+                <div style="font-size:11px;color:var(--t3);margin-bottom:20px">GitHubトークンを設定して管理画面を使い始めましょう</div>
+                <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;font-size:12px;color:var(--t2)">
+                  <div style="display:flex;gap:8px;align-items:center"><span style="width:18px;height:18px;background:var(--red);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0">1</span>github.com → Settings → Tokens (classic) を開く</div>
+                  <div style="display:flex;gap:8px;align-items:center"><span style="width:18px;height:18px;background:var(--red);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0">2</span>「repo」にチェックを入れて Generate token</div>
+                  <div style="display:flex;gap:8px;align-items:center"><span style="width:18px;height:18px;background:var(--red);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0">3</span>表示されたトークンを下に貼り付ける</div>
+                </div>
+                <div style="background:var(--bg2);border:1px solid var(--brd);border-radius:5px;padding:8px 12px;font-size:11px;color:var(--t3);margin-bottom:12px">ghp_••••••••••••••••••••••••••••</div>
+                <div style="background:var(--red);color:#fff;border-radius:5px;padding:10px;text-align:center;font-size:13px;font-weight:700">管理画面に入る</div>
+              </div>
+            </div>
+          </div>
+          <div class="callout warn" style="margin-top:14px">
+            <div class="callout-icon">⚠️</div>
+            <div><strong>トークンの作成方法がわからない場合</strong>
+              <a href="https://github.com/settings/tokens/new?description=portfolio-admin&scopes=repo" target="_blank" style="color:var(--yellow)">github.com/settings/tokens/new</a> を開き、「repo」にチェック → Generate token → 表示された文字列をコピー</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">③</div>
+        <div class="step-body">
+          <div class="step-title">管理画面が開く</div>
+          <div class="step-desc">ログイン成功すると、左側にメニュー、右側にコンテンツが表示されます。</div>
+          <div class="step-img">
+            <div class="mock">
+              <div class="mock-bar">
+                <div class="mock-dots"><div class="mock-dot" style="background:#ff5f56"></div><div class="mock-dot" style="background:#ffbd2e"></div><div class="mock-dot" style="background:#27c93f"></div></div>
+                <div class="mock-url">ranze-portfolio.netlify.app/admin/panel.html</div>
+                <div style="font-size:11px;color:var(--t3);display:flex;gap:8px">
+                  <span>↗ サイトを見る</span><span>ログアウト</span>
+                </div>
+              </div>
+              <div class="mock-grid">
+                <div class="mock-sidebar">
+                  <div style="font-size:9px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px 2px">コンテンツ</div>
+                  <div class="mock-nav active">🖼 作品・実績</div>
+                  <div class="mock-nav">👤 プロフィール</div>
+                  <div class="mock-nav">🔧 スキル</div>
+                </div>
+                <div class="mock-main">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                    <div style="font-size:14px;font-weight:700">作品・実績 <span style="color:var(--t3);font-weight:400;font-size:11px">4件</span></div>
+                    <div class="mock-btn">＋ 追加</div>
+                  </div>
+                  <div class="mock-card-grid">
+                    <div class="mock-card"><div class="mock-card-img">🌍</div><div class="mock-card-body"><div class="mock-card-badge">ワールド</div><div class="mock-card-title">サンプルワールド</div></div></div>
+                    <div class="mock-card"><div class="mock-card-img">🎭</div><div class="mock-card-body"><div class="mock-card-badge" style="background:rgba(139,92,246,.15);color:#a78bfa">アバター</div><div class="mock-card-title">サンプルアバター</div></div></div>
+                    <div class="mock-card"><div class="mock-card-img">🎉</div><div class="mock-card-body"><div class="mock-card-badge" style="background:rgba(6,182,212,.12);color:#22d3ee">イベント</div><div class="mock-card-title">サンプルイベント</div></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ─────────────────────────────── -->
+  <!-- 2. 作品追加 -->
+  <!-- ─────────────────────────────── -->
+  <div class="section" id="s2">
+    <div class="section-num">2</div>
+    <h2>作品を追加する</h2>
+    <p class="lead">「作品・実績」タブで新しい作品を追加できます。</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">①</div>
+        <div class="step-body">
+          <div class="step-title">「＋ 追加」ボタンをクリック</div>
+          <div class="step-desc">右上の赤いボタンをクリックすると編集フォームが開きます。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">②</div>
+        <div class="step-body">
+          <div class="step-title">フォームに入力する</div>
+          <div class="step-desc">左側のフォームを埋めると、右側でカードのプレビューがリアルタイムで更新されます。</div>
+          <div class="step-img">
+            <div class="mock">
+              <div class="mock-bar">
+                <div class="mock-dots"><div class="mock-dot" style="background:#ff5f56"></div><div class="mock-dot" style="background:#ffbd2e"></div><div class="mock-dot" style="background:#27c93f"></div></div>
+                <div class="mock-url">編集モーダル</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 200px;min-height:200px">
+                <div style="padding:16px;border-right:1px solid var(--brd)">
+                  <div class="mock-form">
+                    <div class="mock-field"><label>タイトル ★</label><input value="マイワールド" readonly></div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                      <div class="mock-field"><label>カテゴリ ★</label><input value="🌍 ワールド" readonly></div>
+                      <div class="mock-field"><label>制作年月</label><input value="2025-06" readonly></div>
+                    </div>
+                    <div class="mock-field"><label>説明文</label><textarea readonly>ワールドの説明をここに…</textarea></div>
+                  </div>
+                </div>
+                <div style="padding:14px;background:var(--bg)">
+                  <div style="font-size:9px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">👁 プレビュー</div>
+                  <div class="mock-card">
+                    <div class="mock-card-img" style="font-size:28px">🌍</div>
+                    <div class="mock-card-body">
+                      <div class="mock-card-badge">ワールド</div>
+                      <div class="mock-card-title">マイワールド</div>
+                      <div style="font-size:10px;color:var(--t3)">ワールドの説明をここに…</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <table>
+            <tr><th>項目</th><th>説明</th><th>必須</th></tr>
+            <tr><td><strong>タイトル</strong></td><td>作品名</td><td><span class="badge red">必須</span></td></tr>
+            <tr><td><strong>カテゴリ</strong></td><td>ワールド / アバター / イベント / 案件 / その他</td><td><span class="badge red">必須</span></td></tr>
+            <tr><td><strong>説明文</strong></td><td>作品の説明。何を作ったか、こだわりなど</td><td><span class="badge yellow">任意</span></td></tr>
+            <tr><td><strong>サムネイル</strong></td><td>画像ファイルをドラッグ&ドロップ、またはURLを貼り付け</td><td><span class="badge yellow">任意</span></td></tr>
+            <tr><td><strong>タグ</strong></td><td>入力して<kbd>Enter</kbd>で追加（Unity, Blender など）</td><td><span class="badge yellow">任意</span></td></tr>
+            <tr><td><strong>リンク</strong></td><td>VRChat / BOOTH / Twitter / YouTube の各URL</td><td><span class="badge yellow">任意</span></td></tr>
+            <tr><td><strong>Featured</strong></td><td>チェックを入れると⭐マークが付いて目立つ</td><td><span class="badge yellow">任意</span></td></tr>
+            <tr><td><strong>公開する</strong></td><td>チェックを外すと非表示（下書き保存）</td><td></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">③</div>
+        <div class="step-body">
+          <div class="step-title">「保存してデプロイ」をクリック</div>
+          <div class="step-desc">ボタンを押すと自動でGitHubに保存され、約1分でサイトに反映されます。</div>
+          <div class="callout ok">
+            <div class="callout-icon">✅</div>
+            <div><strong>これだけでOK！</strong>FTPやターミナルは一切不要です。フォームを埋めてボタンを押すだけ。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ─────────────────────────────── -->
+  <!-- 3. 編集・削除 -->
+  <!-- ─────────────────────────────── -->
+  <div class="section" id="s3">
+    <div class="section-num">3</div>
+    <h2>作品を編集・削除する</h2>
+    <p class="lead">カードに表示されたボタンから操作できます。</p>
+
+    <div class="step-img" style="margin-bottom:20px">
+      <div class="mock">
+        <div class="mock-bar"><div class="mock-dots"><div class="mock-dot" style="background:#ff5f56"></div><div class="mock-dot" style="background:#ffbd2e"></div></div><div class="mock-url">作品カード</div></div>
+        <div class="mock-body">
+          <div style="max-width:240px">
+            <div class="mock-card">
+              <div class="mock-card-img">🌍</div>
+              <div class="mock-card-body"><div class="mock-card-badge">ワールド</div><div class="mock-card-title">マイワールド</div></div>
+              <div style="display:flex;gap:6px;padding:8px 10px;border-top:1px solid var(--brd)">
+                <div class="mock-btn ghost" style="flex:1;justify-content:center">✏ 編集</div>
+                <div style="width:32px;height:28px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:5px;display:flex;align-items:center;justify-content:center;color:#f87171;font-size:13px">🗑</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table>
+      <tr><th>ボタン</th><th>操作</th></tr>
+      <tr><td><span class="badge blue">✏ 編集</span></td><td>フォームが開き、内容を変更できます。変更後「保存してデプロイ」で反映。</td></tr>
+      <tr><td><span class="badge red">🗑 削除</span></td><td>確認ダイアログが出ます。「OK」を押すと削除されます。<strong>元に戻せないので注意。</strong></td></tr>
+    </table>
+  </div>
+
+  <hr>
+
+  <!-- ─────────────────────────────── -->
+  <!-- 4. プロフィール -->
+  <!-- ─────────────────────────────── -->
+  <div class="section" id="s4">
+    <div class="section-num">4</div>
+    <h2>プロフィールを編集する</h2>
+    <p class="lead">左メニューの「プロフィール」をクリックして編集できます。</p>
+
+    <div class="hibox">
+      <strong>編集できる内容：</strong>表示名 / キャッチコピー / 自己紹介文 / 依頼受付状況 / SNSリンク / 統計数字
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">①</div>
+        <div class="step-body">
+          <div class="step-title">左メニューの「👤 プロフィール」をクリック</div>
+          <div class="step-desc">フォームが表示されます。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">②</div>
+        <div class="step-body">
+          <div class="step-title">各フィールドを編集する</div>
+          <div class="step-desc">変更したい項目だけ書き換えればOK。全部埋める必要はありません。</div>
+          <table>
+            <tr><th>項目</th><th>説明・例</th></tr>
+            <tr><td><strong>表示名</strong></td><td>サイトのタイトルやナビに表示される名前</td></tr>
+            <tr><td><strong>キャッチコピー</strong></td><td>例：VRChat Creator | ワールド・アバター制作</td></tr>
+            <tr><td><strong>自己紹介文</strong></td><td>ヒーローセクション下に表示される自己紹介</td></tr>
+            <tr><td><strong>依頼受付状況</strong></td><td>「受付中 ✅」か「停止中 ❌」を選択。バッジが自動表示される</td></tr>
+            <tr><td><strong>SNSリンク</strong></td><td>VRChat / Twitter / BOOTH / GitHub などのURL</td></tr>
+            <tr><td><strong>統計カード</strong></td><td>「制作ワールド数」など数字カードの値を変更</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">③</div>
+        <div class="step-body">
+          <div class="step-title">一番下の「保存してデプロイ」をクリック</div>
+          <div class="step-desc">約1分でサイトに反映されます。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ─────────────────────────────── -->
+  <!-- 5. アバター画像 -->
+  <!-- ─────────────────────────────── -->
+  <div class="section" id="s5">
+    <div class="section-num">5</div>
+    <h2>アバター画像をアップロードする</h2>
+    <p class="lead">プロフィール画面からドラッグ&ドロップで設定できます。</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">①</div>
+        <div class="step-body">
+          <div class="step-title">「👤 プロフィール」を開く</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">②</div>
+        <div class="step-body">
+          <div class="step-title">「アバター画像」エリアに画像をドロップ</div>
+          <div class="step-desc">画像ファイルをドラッグ&ドロップするか、クリックしてファイルを選択します。</div>
+          <div class="step-img">
+            <div class="mock">
+              <div class="mock-bar"><div class="mock-url">アバター画像エリア</div></div>
+              <div class="mock-body" style="max-width:320px">
+                <div class="mock-upload">
+                  <div class="mock-upload-icon">👤</div>
+                  <div>クリックまたはドラッグでアップロード</div>
+                  <div style="font-size:10px;color:var(--t3);margin-top:2px">正方形推奨・PNG/JPG</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="callout tip" style="margin-top:14px">
+            <div class="callout-icon">💡</div>
+            <div><strong>推奨サイズ</strong>正方形（例：400×400px）の画像が綺麗に表示されます。VRChatのスクリーンショットはそのまま使えます。</div>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">③</div>
+        <div class="step-body">
+          <div class="step-title">「保存してデプロイ」をクリック</div>
+          <div class="step-desc">画像がGitHubに自動アップロードされ、サイトのHeroセクションに表示されます。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ─────────────────────────────── -->
+  <!-- 6. スキル -->
+  <!-- ─────────────────────────────── -->
+  <div class="section" id="s6">
+    <div class="section-num">6</div>
+    <h2>スキルを管理する</h2>
+    <p class="lead">「🔧 スキル」タブでツールや技術の一覧を管理できます。</p>
+
+    <div class="hibox">
+      <strong>スキルの表示レベル：</strong>
+      ★★★ 得意（赤でハイライト） / ★★☆ 中級 / ★☆☆ 初級 / ☆☆☆ 学習中
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">①</div>
+        <div class="step-body">
+          <div class="step-title">「スキルを追加」ボタンで新規追加</div>
+          <div class="step-desc">スキル名・カテゴリ（グループ名）・レベルを入力します。カテゴリが同じものはまとめて表示されます。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">②</div>
+        <div class="step-body">
+          <div class="step-title">「−」ボタンで削除</div>
+          <div class="step-desc">不要なスキルは行右端の赤いボタンで削除できます。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">③</div>
+        <div class="step-body">
+          <div class="step-title">「保存してデプロイ」をクリック</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ─────────────────────────────── -->
+  <!-- 7. 反映について -->
+  <!-- ─────────────────────────────── -->
+  <div class="section" id="s7">
+    <div class="section-num">7</div>
+    <h2>保存後の反映について</h2>
+    <p class="lead">保存ボタンを押してからサイトに表示されるまでの流れです。</p>
+
+    <div class="flow">
+      <div class="flow-box red"><span class="flow-icon">💾</span>保存ボタンを押す</div>
+      <div class="flow-arr">→</div>
+      <div class="flow-box"><span class="flow-icon">🐙</span>GitHubに<br>自動保存</div>
+      <div class="flow-arr">→</div>
+      <div class="flow-box"><span class="flow-icon">⚡</span>Netlifyが<br>自動デプロイ</div>
+      <div class="flow-arr">→</div>
+      <div class="flow-box green"><span class="flow-icon">🌐</span>サイトに<br>反映される</div>
+    </div>
+
+    <div class="callout ok" style="margin-top:20px">
+      <div class="callout-icon">⏱</div>
+      <div><strong>反映時間：約1〜2分</strong>保存後、Netlifyのデプロイが完了するまで少し待ってからサイトをリロードしてください。</div>
+    </div>
+
+    <div class="callout tip" style="margin-top:10px">
+      <div class="callout-icon">🔄</div>
+      <div><strong>サイトが更新されない場合</strong>ブラウザのキャッシュが残っている可能性があります。<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>（Mac: <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>）で強制リロードしてください。</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ─────────────────────────────── -->
+  <!-- 8. FAQ -->
+  <!-- ─────────────────────────────── -->
+  <div class="section" id="s8">
+    <div class="section-num">8</div>
+    <h2>よくある質問</h2>
+
+    <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px">
+      <div class="hibox">
+        <strong>Q. 「Failed to fetch」エラーが出る</strong><br>
+        → トークンの有効期限が切れている可能性があります。GitHubで新しいトークンを発行し、ログアウト → 再ログインしてください。
+      </div>
+      <div class="hibox">
+        <strong>Q. 保存したのにサイトが変わらない</strong><br>
+        → Netlifyのデプロイに1〜2分かかります。少し待ってから <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> で強制リロードしてください。
+      </div>
+      <div class="hibox">
+        <strong>Q. 画像が表示されない</strong><br>
+        → アップロード後にサムネイル欄に画像が表示されているか確認してください。表示されていれば保存ボタンを押せば反映されます。
+      </div>
+      <div class="hibox">
+        <strong>Q. 別のPCからも管理したい</strong><br>
+        → 同じURL（/admin/panel.html）を開き、同じGitHubトークンを入力すればOKです。どのブラウザ・PCからでも使えます。
+      </div>
+      <div class="hibox">
+        <strong>Q. 作品を一時的に非公開にしたい</strong><br>
+        → 編集フォームの「公開する」チェックを外して保存すると、サイトに表示されなくなります。削除せずに下書き状態にできます。
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Portfolio Admin マニュアル | <a href="/admin/panel.html">管理画面へ</a> | <a href="/">サイトへ</a></p>
+  </div>
+
+</div>
+</body>
+</html>
