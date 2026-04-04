@@ -4,7 +4,7 @@
   "vrchat_user_id": "usr_42939aae-073a-4e25-843d-b4c1f2e16181",
   "tagline": "VRChat Creator | ワールド・アバター・イベント制作",
   "bio": "VRChatでワールドやアバターを制作しているクリエイターです。ここに自己紹介文を書いてください。どんな活動をしているか、得意なことや好きなものなどを自由に書きましょう。",
-  "avatar_image": "",
+  "avatar_image": "images/avatar.jpg",
   "banner_image": "",
   "social": {
     "vrchat": "https://vrchat.com/home/user/usr_42939aae-073a-4e25-843d-b4c1f2e16181",
@@ -15,10 +15,30 @@
     "youtube": ""
   },
   "stats": [
-    { "label": "制作ワールド", "value": "0", "icon": "🌍", "suffix": "個" },
-    { "label": "制作アバター", "value": "0", "icon": "🎭", "suffix": "体" },
-    { "label": "案件実績",     "value": "0", "icon": "💼", "suffix": "件" },
-    { "label": "VRChat歴",     "value": "0", "icon": "⭐", "suffix": "年" }
+    {
+      "icon": "🌍",
+      "label": "制作ワールド",
+      "value": "0",
+      "suffix": "個"
+    },
+    {
+      "icon": "🎭",
+      "label": "制作アバター",
+      "value": "0",
+      "suffix": "体"
+    },
+    {
+      "icon": "💼",
+      "label": "案件実績",
+      "value": "0",
+      "suffix": "件"
+    },
+    {
+      "icon": "⭐",
+      "label": "VRChat歴",
+      "value": "0",
+      "suffix": "年"
+    }
   ],
   "commission_status": "open",
   "commission_message": "現在お仕事のご依頼を受け付けています。お気軽にDMください。"
