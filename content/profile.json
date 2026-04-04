@@ -38,6 +38,12 @@
       "label": "制作MV（自主制作含む）",
       "value": "6",
       "suffix": "個"
+    },
+    {
+      "icon": "📊",
+      "label": "その他グラフィックデザイン",
+      "value": "4",
+      "suffix": "件"
     }
   ],
   "commission_status": "open",
