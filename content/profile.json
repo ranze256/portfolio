@@ -51,27 +51,27 @@
   "skills": [
     {
       "name": "blender",
-      "category": "",
+      "category": "3D",
       "level": 70
     },
     {
       "name": "Unity",
-      "category": "",
+      "category": "GameEngine",
       "level": 70
     },
     {
       "name": "Adobe After Effects",
-      "category": "",
+      "category": "Motion",
       "level": 70
     },
     {
       "name": "Adobe Photoshop",
-      "category": "",
+      "category": "Graphic",
       "level": 70
     },
     {
       "name": "Adobe illustrator",
-      "category": "",
+      "category": "Graphic",
       "level": 70
     },
     {
