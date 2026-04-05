@@ -152,7 +152,9 @@
       "category": "event",
       "thumbnail": "https://pbs.twimg.com/media/G0DW_DobEAAOKJd?format=jpg&name=4096x4096",
       "description": "VRChat内コンセプトカフェ交流イベント\n「#ずんだもんカフェ」からも動画を\n投稿させてもらったのだ！！",
-      "tags": [],
+      "tags": [
+        "AffterEfects"
+      ],
       "date": "2025-08",
       "links": {
         "vrchat": "",
@@ -160,7 +162,7 @@
         "twitter": "https://x.com/breakpointcojp/status/1957490498832421358?s=20",
         "youtube": ""
       },
-      "client": "",
+      "client": "ブレイクポイント株式会社",
       "featured": false,
       "published": true
     },
