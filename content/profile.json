@@ -82,17 +82,17 @@
     },
     {
       "name": "Codex",
-      "category": "Coding",
+      "category": "Editor",
       "level": 70
     },
     {
       "name": "Claude Code",
-      "category": "Coding",
+      "category": "Editor",
       "level": 70
     },
     {
       "name": "VScode",
-      "category": "Coding",
+      "category": "Editor",
       "level": 70
     }
   ]
