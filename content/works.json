@@ -270,6 +270,27 @@
       "client": "KURAKU.lab",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "-ft-sv-mv-mnli4nrm",
+      "title": "愛してあげられなくてごめんね / ブブゼラ ft. 重音テトSV  ファンMV制作",
+      "category": "privatework",
+      "thumbnail": "images/uploads/1775377841963-__________2026-04-05_172810.png",
+      "description": "ブブゼラ様の愛してあげられなくてごめんね / ブブゼラ ft. 重音テトSV  \nの自主制作MVを制作しました。",
+      "tags": [
+        "Blender",
+        "AfterEffects"
+      ],
+      "date": "2024-06",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": "https://youtu.be/2BGkEXOHpjc?si=ysikihPy0bUdNLiY"
+      },
+      "client": "",
+      "featured": false,
+      "published": true
     }
   ]
 }
