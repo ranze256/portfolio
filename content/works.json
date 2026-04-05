@@ -250,6 +250,26 @@
       "client": "KURAKU.lab",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "saga-mnlhl468",
+      "title": "SAGA【ギミック付きマスケット銃】サムネイル制作",
+      "category": "graphicdesign",
+      "thumbnail": "images/uploads/1775376929762-7e703dd5-a828-4a08-9e60-52bd088d7b57.png",
+      "description": "KURAKU.lab様のBoothアイテム、\nSAGA【ギミック付きマスケット銃】サムネイルデザインを担当しました。",
+      "tags": [
+        "PhotoShop"
+      ],
+      "date": "2025-11",
+      "links": {
+        "vrchat": "",
+        "booth": "https://kurakurage-jp.booth.pm/items/7284987",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "KURAKU.lab",
+      "featured": false,
+      "published": true
     }
   ]
 }
