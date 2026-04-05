@@ -77,6 +77,27 @@
       "client": "クライアント名（任意）",
       "featured": true,
       "published": true
+    },
+    {
+      "id": "mv-mnl59q8w",
+      "title": "オリジナル楽曲【空に描く】MV制作",
+      "category": "other",
+      "thumbnail": "images/uploads/1775356243295-__________2026-04-05_112813.png",
+      "description": "オリジナル楽曲【空に描く】のMVを担当させて頂きました。",
+      "tags": [
+        "AfterEffects",
+        "Blender"
+      ],
+      "date": "2025-03",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": "https://youtu.be/66vmWpY4aC4?si=wRd2B-dgeBrOYw1G"
+      },
+      "client": "",
+      "featured": false,
+      "published": true
     }
   ]
 }
