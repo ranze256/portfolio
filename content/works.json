@@ -227,6 +227,27 @@
       "client": "大黒イコナ様",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "endeavor-mnlhe6t6",
+      "title": "Endeavor【ギミック付き眼鏡】サムネイル制作",
+      "category": "graphicdesign",
+      "thumbnail": "images/uploads/1775376606834-dacb5b92-17b6-4afa-ac0a-6178e74edc53.png",
+      "description": "KURAKU.lab様のBoothアイテム、\nEndeavor【ギミック付き眼鏡】サムネイルデザインを担当しました。",
+      "tags": [
+        "illustrator",
+        "Photoshop"
+      ],
+      "date": "2025-11",
+      "links": {
+        "vrchat": "",
+        "booth": "https://kurakurage-jp.booth.pm/items/7682210",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "KURAKU.lab",
+      "featured": false,
+      "published": true
     }
   ]
 }
