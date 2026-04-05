@@ -98,11 +98,10 @@ label{display:block;font-size:12px;font-weight:600;letter-spacing:.06em;color:va
 .card-body{padding:14px 16px}
 .card-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .cat-badge{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.cat-world     {background:var(--red-dim);color:var(--red);border:1px solid var(--red-brd)}
-.cat-avatar    {background:rgba(139,92,246,.12);color:#a78bfa;border:1px solid rgba(139,92,246,.25)}
-.cat-event     {background:rgba(6,182,212,.10);color:#22d3ee;border:1px solid rgba(6,182,212,.25)}
-.cat-commission{background:rgba(245,158,11,.10);color:#fcd34d;border:1px solid rgba(245,158,11,.25)}
-.cat-other     {background:var(--bg2);color:var(--t2);border:1px solid var(--brd)}
+.cat-world       {background:var(--red-dim);color:var(--red);border:1px solid var(--red-brd)}
+.cat-event       {background:rgba(6,182,212,.10);color:#22d3ee;border:1px solid rgba(6,182,212,.25)}
+.cat-privatework {background:rgba(251,146,60,.12);color:#fb923c;border:1px solid rgba(251,146,60,.28)}
+.cat-other       {background:var(--bg2);color:var(--t2);border:1px solid var(--brd)}
 .card-title{font-size:13px;font-weight:600;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .card-date{font-size:11px;color:var(--t3)}
 .card-actions{display:flex;gap:6px;padding:10px 16px;border-top:1px solid var(--brd)}
@@ -309,9 +308,8 @@ label{display:block;font-size:12px;font-weight:600;letter-spacing:.06em;color:va
             <label>カテゴリ <span style="color:var(--red)">*</span></label>
             <select id="f-category" onchange="updatePreview()">
               <option value="world">🌍 ワールド</option>
-              <option value="avatar">🎭 アバター</option>
               <option value="event">🎉 イベント</option>
-              <option value="commission">💼 案件</option>
+              <option value="privatework">🖌️ PrivateWork</option>
               <option value="other">✨ その他</option>
             </select>
           </div>
@@ -418,11 +416,10 @@ const REPO = 'ranze256/portfolio';
 const API  = 'https://api.github.com';
 
 const CATS = {
-  world:      { label:'ワールド',  icon:'🌍', cls:'cat-world' },
-  avatar:     { label:'アバター',  icon:'🎭', cls:'cat-avatar' },
-  event:      { label:'イベント',  icon:'🎉', cls:'cat-event' },
-  commission: { label:'案件',      icon:'💼', cls:'cat-commission' },
-  other:      { label:'その他',    icon:'✨', cls:'cat-other' },
+  world:       { label:'ワールド',    icon:'🌍', cls:'cat-world' },
+  event:       { label:'イベント',    icon:'🎉', cls:'cat-event' },
+  privatework: { label:'PrivateWork', icon:'🖌️', cls:'cat-privatework' },
+  other:       { label:'その他',      icon:'✨', cls:'cat-other' },
 };
 
 // ─────────────────────────────────

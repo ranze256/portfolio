@@ -4,11 +4,10 @@
 
 /* ---- Category config ---- */
 const CATEGORIES = {
-  world:      { label: 'ワールド',  icon: '🌍', cls: 'cat-world' },
-  avatar:     { label: 'アバター',  icon: '🎭', cls: 'cat-avatar' },
-  event:      { label: 'イベント',  icon: '🎉', cls: 'cat-event' },
-  commission: { label: '案件',      icon: '💼', cls: 'cat-commission' },
-  other:      { label: 'その他',    icon: '✨', cls: 'cat-other' },
+  world:       { label: 'ワールド',    icon: '🌍', cls: 'cat-world' },
+  event:       { label: 'イベント',    icon: '🎉', cls: 'cat-event' },
+  privatework: { label: 'PrivateWork', icon: '🖌️', cls: 'cat-privatework' },
+  other:       { label: 'その他',      icon: '✨', cls: 'cat-other' },
 };
 
 const SOCIAL_ICONS = {
