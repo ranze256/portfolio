@@ -46,7 +46,7 @@
     {
       "id": "commission-sample-01",
       "title": "VRC日本酒開栓会",
-      "category": "event",
+      "category": "privatework",
       "thumbnail": "images/uploads/1775361117534-file_531070c2-c249-4fd2-9ae1-a63cd3141fbb_blob.png",
       "description": "VRC日本酒開栓会概要\n\n日本酒検定有資格者である主催者が毎回テーマに沿って日本酒を選定し、参加者全員で同じタイミングに開栓して楽しむオンライン交流イベントを、毎月1回開催しています。\n\n開催日程および当日扱う日本酒の購入URLは、主催である ranze256 のX にて事前告知を実施。\n日本酒に苦手意識がある方や、お酒にあまり慣れていない方でも参加しやすいよう、従来の日本酒のイメージを覆すような飲みやすい銘柄選定を意識しています。\n\nまた、回ごとに企画内容を変えながら、参加者同士でおつまみを持ち寄る「おつまみ会」や、主催による「大吟醸」などのテーマ別日本酒解説会も実施予定です。\n\n日本酒をきっかけに、初心者から経験者まで気軽に交流しながら楽しめる場づくりを目的とした継続イベントとして運営しています。",
       "tags": [
@@ -55,7 +55,7 @@
       ],
       "date": "2025-08",
       "links": {
-        "vrchat": "",
+        "vrchat": "https://vrchat.com/home/group/grp_d53793b2-0b29-4752-9c37-41b1c8291e62",
         "booth": "",
         "twitter": "",
         "youtube": ""
@@ -106,7 +106,7 @@
     {
       "id": "-mnl5trxh",
       "title": "ずんだもんカフェロゴ制作",
-      "category": "other",
+      "category": "graphicdesign",
       "thumbnail": "https://pbs.twimg.com/media/GXEoxaTbEAEx8uO?format=png&name=medium",
       "description": "ずんだもんカフェのロゴを制作致しました。",
       "tags": [
@@ -152,7 +152,9 @@
       "category": "event",
       "thumbnail": "https://pbs.twimg.com/media/G0DW_DobEAAOKJd?format=jpg&name=4096x4096",
       "description": "VRChat内コンセプトカフェ交流イベント\n「#ずんだもんカフェ」からも動画を\n投稿させてもらったのだ！！",
-      "tags": [],
+      "tags": [
+        "AffterEfects"
+      ],
       "date": "2025-08",
       "links": {
         "vrchat": "",
@@ -160,14 +162,14 @@
         "twitter": "https://x.com/breakpointcojp/status/1957490498832421358?s=20",
         "youtube": ""
       },
-      "client": "",
+      "client": "ブレイクポイント株式会社",
       "featured": false,
       "published": true
     },
     {
       "id": "vrc-mnl8q4f9",
       "title": "VRC広島集会様ロゴ制作",
-      "category": "other",
+      "category": "graphicdesign",
       "thumbnail": "images/uploads/1775362047771-________4.png",
       "description": "VRC広島集会様のロゴグラフィック、ポスター、3Dバッジを制作させて頂きました。",
       "tags": [
@@ -210,7 +212,7 @@
     {
       "id": "-mnl98k1x",
       "title": "大黒イコナ様名刺制作",
-      "category": "other",
+      "category": "graphicdesign",
       "thumbnail": "images/uploads/1775362907402-__________2026-04-05_131909.png",
       "description": "VRC九州集会 共同主催をされている大黒イコナ様の\n名刺デザインを担当しました。",
       "tags": [
@@ -225,6 +227,145 @@
         "youtube": ""
       },
       "client": "大黒イコナ様",
+      "featured": false,
+      "published": true
+    },
+    {
+      "id": "endeavor-mnlhe6t6",
+      "title": "Endeavor【ギミック付き眼鏡】サムネイル制作",
+      "category": "graphicdesign",
+      "thumbnail": "images/uploads/1775376606834-dacb5b92-17b6-4afa-ac0a-6178e74edc53.png",
+      "description": "KURAKU.lab様のBoothアイテム、\nEndeavor【ギミック付き眼鏡】サムネイルデザインを担当しました。",
+      "tags": [
+        "illustrator",
+        "Photoshop"
+      ],
+      "date": "2025-11",
+      "links": {
+        "vrchat": "",
+        "booth": "https://kurakurage-jp.booth.pm/items/7682210",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "KURAKU.lab",
+      "featured": false,
+      "published": true
+    },
+    {
+      "id": "saga-mnlhl468",
+      "title": "SAGA【ギミック付きマスケット銃】サムネイル制作",
+      "category": "graphicdesign",
+      "thumbnail": "images/uploads/1775376929762-7e703dd5-a828-4a08-9e60-52bd088d7b57.png",
+      "description": "KURAKU.lab様のBoothアイテム、\nSAGA【ギミック付きマスケット銃】サムネイルデザインを担当しました。",
+      "tags": [
+        "PhotoShop"
+      ],
+      "date": "2025-11",
+      "links": {
+        "vrchat": "",
+        "booth": "https://kurakurage-jp.booth.pm/items/7284987",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "KURAKU.lab",
+      "featured": false,
+      "published": true
+    },
+    {
+      "id": "-ft-sv-mv-mnli4nrm",
+      "title": "愛してあげられなくてごめんね / ブブゼラ ft. 重音テトSV  ファンMV制作",
+      "category": "privatework",
+      "thumbnail": "images/uploads/1775377841963-__________2026-04-05_172810.png",
+      "description": "ブブゼラ様の愛してあげられなくてごめんね / ブブゼラ ft. 重音テトSV  \nの自主制作MVを制作しました。",
+      "tags": [
+        "Blender",
+        "AfterEffects"
+      ],
+      "date": "2024-06",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": "https://youtu.be/2BGkEXOHpjc?si=ysikihPy0bUdNLiY"
+      },
+      "client": "",
+      "featured": false,
+      "published": true
+    },
+    {
+      "id": "ag03-mnlicbvy",
+      "title": "AG03",
+      "category": "privatework",
+      "thumbnail": "images/uploads/1775378199280-AG03____2.png",
+      "description": "blenderで制作したYAMAHA AG03の3Dモデルです",
+      "tags": [
+        "blender"
+      ],
+      "date": "2020-08",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "",
+      "featured": false,
+      "published": true
+    },
+    {
+      "id": "--mnlielfi",
+      "title": "ぺんてる グラフギア",
+      "category": "privatework",
+      "thumbnail": "images/uploads/1775378305533-________.png",
+      "description": "blenderで制作したぺんてる グラフギアの3Dモデルです",
+      "tags": [],
+      "date": "",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "",
+      "featured": false,
+      "published": true
+    },
+    {
+      "id": "-mnlijli9",
+      "title": "壁紙デザイン",
+      "category": "privatework",
+      "thumbnail": "images/uploads/1775378535919-11_________.png",
+      "description": "個人用途でVRChatで使用しているアバターの壁紙をデザインしました。",
+      "tags": [
+        "illustrator",
+        "Photoshop"
+      ],
+      "date": "2025-11",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "",
+      "featured": false,
+      "published": true
+    },
+    {
+      "id": "-mnliwufm",
+      "title": "ずんだもんカフェ",
+      "category": "privatework",
+      "thumbnail": "images/uploads/1775379157585-__________.png",
+      "description": "AIボイスチェンジャーを用いてずんだもんの容姿、声で接客を行うカフェです。\n私がオーナーをしており、不定期にてコラボ企画を行っております。\n詳しくは実績ポートフォリオをご覧ください。",
+      "tags": [],
+      "date": "2023-01",
+      "links": {
+        "vrchat": "https://vrchat.com/home/group/grp_7fb0488b-62cb-4136-9068-4ab1d65ccc01",
+        "booth": "",
+        "twitter": "https://x.com/zunda_vrc/media",
+        "youtube": ""
+      },
+      "client": "",
       "featured": false,
       "published": true
     }
