@@ -23,26 +23,6 @@
       "published": true
     },
     {
-      "id": "avatar-sample-01",
-      "title": "サンプルアバター改変",
-      "category": "avatar",
-      "thumbnail": "images/works/avatar-sample-01.jpg",
-      "description": "制作したアバターの説明。ベースアバター、改変内容、使用ツールなどを記載。",
-      "tags": [
-        "VRChat",
-        "Blender",
-        "Unity"
-      ],
-      "date": "2025-02",
-      "links": {
-        "booth": "",
-        "twitter": ""
-      },
-      "client": "",
-      "featured": false,
-      "published": true
-    },
-    {
       "id": "event-sample-01",
       "title": "ずんだもんカフェリルパコラボキャンペーン",
       "category": "event",
