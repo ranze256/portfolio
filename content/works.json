@@ -44,20 +44,22 @@
     },
     {
       "id": "event-sample-01",
-      "title": "サンプルイベント",
+      "title": "ずんだもんカフェリルパコラボキャンペーン",
       "category": "event",
-      "thumbnail": "images/works/event-sample-01.jpg",
-      "description": "開催したイベントの説明。参加人数、内容、コンセプトなどを書きましょう。",
+      "thumbnail": "images/uploads/1775356860360-Adobe_Express_2026-04-05_11.37.00.png",
+      "description": "自分のオーナーイベントである\nずんだもんカフェのフォトコンキャンペーンにてかえでラボ様からアクリルフォトパネル「リルパ」の賞品提供をして頂きました。",
       "tags": [
         "VRChat",
         "イベント企画"
       ],
-      "date": "2025-03",
+      "date": "2023-02",
       "links": {
-        "twitter": "",
+        "vrchat": "",
+        "booth": "",
+        "twitter": "https://x.com/zunda_vrc",
         "youtube": ""
       },
-      "client": "",
+      "client": "ずんだもんカフェ",
       "featured": false,
       "published": true
     },
