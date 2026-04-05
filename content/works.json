@@ -227,6 +227,24 @@
       "client": "大黒イコナ様",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "-mnlblzlv",
+      "title": "だｓ",
+      "category": "world",
+      "thumbnail": "images/uploads/1775366891313-VRChat_2025-12-05_00-35-21.890_3840x2160.png",
+      "description": "",
+      "tags": [],
+      "date": "",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "",
+      "featured": false,
+      "published": true
     }
   ]
 }
