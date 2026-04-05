@@ -94,6 +94,16 @@
       "name": "VScode",
       "category": "Editor",
       "level": 70
+    },
+    {
+      "name": "OctaneRender",
+      "category": "",
+      "level": 70
+    },
+    {
+      "name": "Cycles",
+      "category": "",
+      "level": 70
     }
   ]
 }
