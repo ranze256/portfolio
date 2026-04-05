@@ -125,7 +125,11 @@
       "category": "other",
       "thumbnail": "https://pbs.twimg.com/media/GXEoxaTbEAEx8uO?format=png&name=medium",
       "description": "ずんだもんカフェのロゴを制作致しました。",
-      "tags": [],
+      "tags": [
+        "Event",
+        "illustrator",
+        "Logo"
+      ],
       "date": "2024-09",
       "links": {
         "vrchat": "",
