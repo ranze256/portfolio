@@ -44,6 +44,12 @@
       "label": "その他グラフィックデザイン",
       "value": "4",
       "suffix": "件"
+    },
+    {
+      "icon": "📊",
+      "label": "運営イベント",
+      "value": "3",
+      "suffix": "個"
     }
   ],
   "commission_status": "open",
