@@ -79,6 +79,21 @@
       "name": "Adobe illustrator",
       "category": "Graphic",
       "level": 70
+    },
+    {
+      "name": "Codex",
+      "category": "Coding",
+      "level": 70
+    },
+    {
+      "name": "Claude Code",
+      "category": "Coding",
+      "level": 70
+    },
+    {
+      "name": "VScode",
+      "category": "Coding",
+      "level": 70
     }
   ]
 }
