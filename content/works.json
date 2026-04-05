@@ -140,6 +140,27 @@
       "client": "ずんだもんカフェ",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "-mnl64wr7",
+      "title": "東北ずん子ずんだもん公式コラボキャンペーン改変フォトコンテスト",
+      "category": "event",
+      "thumbnail": "https://pbs.twimg.com/media/GdJMCRVbcAAWl9U?format=jpg&name=large",
+      "description": "東北ずん子ずんだもん公式様とずんだもんカフェと改変フォトコンコラボレーションキャンペーン\nを実施、賞品提供して頂きました。",
+      "tags": [
+        "illustrator",
+        "Event"
+      ],
+      "date": "2024-11",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "https://x.com/zunda_vrc/status/1860669705175846945?s=20",
+        "youtube": ""
+      },
+      "client": "ずんだもんカフェ",
+      "featured": false,
+      "published": true
     }
   ]
 }
