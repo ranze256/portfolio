@@ -118,6 +118,24 @@
       "client": "ずんだもんカフェ",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "-mnl5trxh",
+      "title": "ずんだもんカフェロゴ制作",
+      "category": "other",
+      "thumbnail": "https://pbs.twimg.com/media/GXEoxaTbEAEx8uO?format=png&name=medium",
+      "description": "ずんだもんカフェのロゴを制作致しました。",
+      "tags": [],
+      "date": "2024-09",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "https://x.com/zunda_vrc",
+        "youtube": ""
+      },
+      "client": "ずんだもんカフェ",
+      "featured": false,
+      "published": true
     }
   ]
 }
