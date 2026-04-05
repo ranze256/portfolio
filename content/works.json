@@ -329,6 +329,27 @@
       "client": "",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "-mnlijli9",
+      "title": "壁紙デザイン",
+      "category": "privatework",
+      "thumbnail": "images/uploads/1775378535919-11_________.png",
+      "description": "個人用途でVRChatで使用しているアバターの壁紙をデザインしました。",
+      "tags": [
+        "illustrator",
+        "Photoshop"
+      ],
+      "date": "2025-11",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "",
+      "featured": false,
+      "published": true
     }
   ]
 }
