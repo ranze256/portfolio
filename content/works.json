@@ -350,6 +350,24 @@
       "client": "",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "-mnliwufm",
+      "title": "ずんだもんカフェ",
+      "category": "privatework",
+      "thumbnail": "images/uploads/1775379157585-__________.png",
+      "description": "AIボイスチェンジャーを用いてずんだもんの容姿、声で接客を行うカフェです。\n私がオーナーをしており、不定期にてコラボ企画を行っております。\n詳しくは実績ポートフォリオをご覧ください。",
+      "tags": [],
+      "date": "2023-01",
+      "links": {
+        "vrchat": "https://vrchat.com/home/group/grp_7fb0488b-62cb-4136-9068-4ab1d65ccc01",
+        "booth": "",
+        "twitter": "https://x.com/zunda_vrc/media",
+        "youtube": ""
+      },
+      "client": "",
+      "featured": false,
+      "published": true
     }
   ]
 }
