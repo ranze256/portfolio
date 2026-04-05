@@ -185,6 +185,27 @@
       "client": "一般社団法人REARV様、VRC広島集会様",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "-mnl8vxt5",
+      "title": "株式会社アスカネット様インターンシッププログラムにて登壇",
+      "category": "other",
+      "thumbnail": "images/uploads/1775362319234-__________2026-04-05_131008.png",
+      "description": "アントレプレナーシップ体験型インターンシッププログラムにてインターンシップ参加者向けに講演をさせて頂きました。",
+      "tags": [
+        "登壇",
+        "講師"
+      ],
+      "date": "",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "株式会社アスカネット様",
+      "featured": false,
+      "published": true
     }
   ]
 }
