@@ -4,10 +4,11 @@
 
 /* ---- Category config ---- */
 const CATEGORIES = {
-  world:       { label: 'ワールド',    icon: '🌍', cls: 'cat-world' },
-  event:       { label: 'イベント',    icon: '🎉', cls: 'cat-event' },
-  privatework: { label: 'PrivateWork', icon: '🖌️', cls: 'cat-privatework' },
-  other:       { label: 'その他',      icon: '✨', cls: 'cat-other' },
+  world:         { label: 'ワールド',      icon: '🌍', cls: 'cat-world' },
+  event:         { label: 'イベント',      icon: '🎉', cls: 'cat-event' },
+  privatework:   { label: 'PrivateWork',   icon: '🖌️', cls: 'cat-privatework' },
+  graphicdesign: { label: 'GraphicDesign', icon: '🎨', cls: 'cat-graphicdesign' },
+  other:         { label: 'その他',        icon: '✨', cls: 'cat-other' },
 };
 
 const SOCIAL_ICONS = {
@@ -371,6 +372,25 @@ const DEFAULT_SKILLS = [
   { name: 'Illustrator',level: 50, category: 'デザイン' },
 ];
 
+/* ---- Self-made works section ---- */
+function renderSelfmade(works) {
+  const grid = document.getElementById('selfmade-grid');
+  if (!grid) return;
+
+  const items = works.filter(w => w.published !== false && w.category === 'privatework');
+  if (items.length === 0) {
+    grid.innerHTML = `<p style="color:var(--text-3);text-align:center;grid-column:1/-1;padding:60px 0;">
+      まだ自主制作作品がありません。管理画面で PrivateWork カテゴリに設定してください。
+    </p>`;
+    return;
+  }
+
+  grid.innerHTML = items.map(work => buildWorkCard(work)).join('');
+  grid.querySelectorAll('.work-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.id, works));
+  });
+}
+
 /* ---- Boot ---- */
 async function main() {
   initParticles();
@@ -384,6 +404,7 @@ async function main() {
     renderAbout(profile);
     renderWorks(works);
     initFilters(works);
+    renderSelfmade(works);
     renderSkills(profile.skills || DEFAULT_SKILLS);
     renderContact(profile);
     renderFooter(profile);
