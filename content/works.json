@@ -291,6 +291,26 @@
       "client": "",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "ag03-mnlicbvy",
+      "title": "AG03",
+      "category": "privatework",
+      "thumbnail": "images/uploads/1775378199280-AG03____2.png",
+      "description": "blenderで制作したYAMAHA AG03の3Dモデルです",
+      "tags": [
+        "blender"
+      ],
+      "date": "2020-08",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "",
+      "featured": false,
+      "published": true
     }
   ]
 }
