@@ -311,6 +311,24 @@
       "client": "",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "--mnlielfi",
+      "title": "ぺんてる グラフギア",
+      "category": "privatework",
+      "thumbnail": "images/uploads/1775378305533-________.png",
+      "description": "blenderで制作したぺんてる グラフギアの3Dモデルです",
+      "tags": [],
+      "date": "",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "",
+      "featured": false,
+      "published": true
     }
   ]
 }
