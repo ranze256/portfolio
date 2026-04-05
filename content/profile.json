@@ -97,12 +97,12 @@
     },
     {
       "name": "OctaneRender",
-      "category": "",
+      "category": "3D",
       "level": 70
     },
     {
       "name": "Cycles",
-      "category": "",
+      "category": "3D",
       "level": 70
     }
   ]
