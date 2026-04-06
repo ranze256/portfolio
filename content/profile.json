@@ -104,6 +104,11 @@
       "name": "Cycles",
       "category": "3D",
       "level": 70
+    },
+    {
+      "name": "SubstancePainter",
+      "category": "3D",
+      "level": 70
     }
   ]
 }
