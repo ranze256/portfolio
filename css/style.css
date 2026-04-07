@@ -549,13 +549,46 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* --- Works --- */
+.works-controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 0;
+}
 .filter-bar {
   display: flex;
+  flex: 1;
   gap: 2px;
   margin-bottom: 48px;
   border-bottom: 1px solid var(--border);
   overflow-x: auto;
   padding-bottom: 0;
+}
+.sort-toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  margin-bottom: 48px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s var(--ease);
+}
+.sort-toggle:hover { color: var(--text-2); border-color: var(--text-3); }
+.sort-toggle.active {
+  color: var(--red);
+  border-color: var(--red);
+  background: rgba(229,62,62,.06);
 }
 .filter-btn {
   padding: 12px 20px;
@@ -901,7 +934,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .works-grid { grid-template-columns: 1fr; gap: 1px; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .mobile-menu { padding: 32px 20px; }
+  .works-controls { align-items: flex-start; flex-wrap: wrap; }
   .filter-bar { gap: 0; }
+  .sort-toggle { margin-bottom: 12px; }
   .hero-inner { padding: 0 20px; }
   .about-bio { padding: 28px; }
   .modal { padding: 28px; }

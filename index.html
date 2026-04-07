@@ -106,7 +106,7 @@
     <div class="container">
       <div class="section-header">
         <div class="section-label">About</div>
-        <h2 class="section-title">クリエイターについて</h2>
+        <h2 class="section-title">ranzeについて</h2>
       </div>
       <div class="about-grid">
         <div class="about-bio reveal">
@@ -127,13 +127,18 @@
         <div class="section-label">Works</div>
         <h2 class="section-title">制作実績・ポートフォリオ</h2>
       </div>
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="world">🌍 World</button>
-        <button class="filter-btn" data-filter="event">🎉 Event</button>
-        <button class="filter-btn" data-filter="privatework">🖌️ PrivateWork</button>
-        <button class="filter-btn" data-filter="graphicdesign">🎨 GraphicDesign</button>
-        <button class="filter-btn" data-filter="other">Other</button>
+      <div class="works-controls">
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="world">🌍 World</button>
+          <button class="filter-btn" data-filter="event">🎉 Event</button>
+          <button class="filter-btn" data-filter="privatework">🖌️ PrivateWork</button>
+          <button class="filter-btn" data-filter="graphicdesign">🎨 GraphicDesign</button>
+          <button class="filter-btn" data-filter="other">Other</button>
+        </div>
+        <button class="sort-toggle" id="sort-btn" data-sort="default">
+          <i class="fa-solid fa-arrow-down-wide-short"></i> 登録順
+        </button>
       </div>
       <div class="works-grid" id="works-grid">
         <!-- Rendered by JS -->

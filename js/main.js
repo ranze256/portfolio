@@ -129,12 +129,28 @@ function renderAbout(profile) {
 
 /* ---- Works ---- */
 let currentFilter = 'all';
+let currentSort   = 'default'; // 'default' | 'newest'
+let _worksCache   = [];        // published worksの参照を保持
+
+function sortWorks(works, sort) {
+  if (sort !== 'newest') return works;
+  return [...works].sort((a, b) => {
+    const da = a.date || '';
+    const db = b.date || '';
+    if (da === db) return 0;
+    if (!da) return 1;   // 日付なしは末尾
+    if (!db) return -1;
+    return db.localeCompare(da); // 降順（新しい順）
+  });
+}
 
 function renderWorks(works) {
   const grid = document.getElementById('works-grid');
   if (!grid) return;
 
   const published = works.filter(w => w.published !== false);
+  _worksCache = published;
+
   if (published.length === 0) {
     grid.innerHTML = `<p style="color:var(--text-3);text-align:center;grid-column:1/-1;padding:60px 0;">
       まだ作品がありません。<code>content/works.json</code> に追加してください。
@@ -142,7 +158,8 @@ function renderWorks(works) {
     return;
   }
 
-  grid.innerHTML = published.map(work => buildWorkCard(work)).join('');
+  const sorted = sortWorks(published, currentSort);
+  grid.innerHTML = sorted.map(work => buildWorkCard(work)).join('');
 
   grid.querySelectorAll('.work-card').forEach(card => {
     card.addEventListener('click', () => openModal(card.dataset.id, published));
@@ -197,6 +214,31 @@ function applyFilter(filter, works) {
 function initFilters(works) {
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => applyFilter(btn.dataset.filter, works));
+  });
+}
+
+function initSort() {
+  const btn = document.getElementById('sort-btn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    currentSort = currentSort === 'default' ? 'newest' : 'default';
+    const isNewest = currentSort === 'newest';
+    btn.dataset.sort = currentSort;
+    btn.innerHTML = isNewest
+      ? '<i class="fa-solid fa-arrow-down-wide-short"></i> 新着順'
+      : '<i class="fa-solid fa-arrow-down-wide-short"></i> 登録順';
+    btn.classList.toggle('active', isNewest);
+
+    // グリッドを再描画（フィルター状態を維持）
+    const grid = document.getElementById('works-grid');
+    if (!grid || _worksCache.length === 0) return;
+    const sorted = sortWorks(_worksCache, currentSort);
+    grid.innerHTML = sorted.map(work => buildWorkCard(work)).join('');
+    grid.querySelectorAll('.work-card').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.id, _worksCache));
+    });
+    applyFilter(currentFilter, _worksCache);
+    reinitScrollReveal();
   });
 }
 
@@ -404,6 +446,7 @@ async function main() {
     renderAbout(profile);
     renderWorks(works);
     initFilters(works);
+    initSort();
     renderSelfmade(works);
     renderSkills(profile.skills || DEFAULT_SKILLS);
     renderContact(profile);
