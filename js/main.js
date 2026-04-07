@@ -129,7 +129,7 @@ function renderAbout(profile) {
 
 /* ---- Works ---- */
 let currentFilter = 'all';
-let currentSort   = 'default'; // 'default' | 'newest'
+let currentSort   = 'newest'; // 'default' | 'newest'
 let _worksCache   = [];        // published worksの参照を保持
 
 function sortWorks(works, sort) {
