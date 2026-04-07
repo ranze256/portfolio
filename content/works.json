@@ -368,6 +368,26 @@
       "client": "",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "-metacha--mno2g9z4",
+      "title": "株式会社福寿園様 metaCHA / 茶摘み体験ギミック実装",
+      "category": "world",
+      "thumbnail": "images/uploads/1775532908909-__________2026-04-07_122022.png",
+      "description": "伊右衛門ブランド等を展開されている創業230年を超える京都の老舗茶舗・福寿園様が運営するVRChatワールド「metaCHA」に、茶摘み体験ギミックを追加実装致しました。\n\n担当範囲\n\n茶葉インタラクション実装（つまむ・摘む操作の判定ロジック）\n茶摘みの成否判定システム設計\n演出・アニメーション制御\nUI / 進行ガイド設計・実装",
+      "tags": [
+        "World"
+      ],
+      "date": "2026-04",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "https://x.com/metaCHA_tea",
+        "youtube": ""
+      },
+      "client": "株式会社福寿園様",
+      "featured": true,
+      "published": true
     }
   ]
 }
