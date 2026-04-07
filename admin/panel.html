@@ -530,21 +530,40 @@ async function ghGet(path) {
 }
 
 async function ghPut(path, content, sha, message) {
-  const body = {
-    message,
-    content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))),
+  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
+
+  const tryPut = async (useSha) => {
+    const body = { message, content: encoded };
+    if (useSha) body.sha = useSha;
+    const res = await fetch(`${API}/repos/${REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    return { ok: res.ok, status: res.status, data };
   };
-  if (sha) body.sha = sha;
-  const res = await fetch(`${API}/repos/${REPO}/contents/${path}`, {
-    method: 'PUT',
-    headers: {
-      Authorization: `token ${token}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-  const data = await res.json();
-  return res.ok ? data : null;
+
+  let r = await tryPut(sha);
+
+  // SHA競合(409)の場合、最新SHAを取得してリトライ
+  if (!r.ok && r.status === 409) {
+    const latest = await ghGet(path);
+    if (latest && latest.sha) {
+      // グローバルSHAも更新
+      if (path === 'content/works.json')   worksFileSha   = latest.sha;
+      if (path === 'content/profile.json') profileFileSha = latest.sha;
+      r = await tryPut(latest.sha);
+    }
+  }
+
+  if (!r.ok) {
+    console.error(`ghPut failed [${r.status}]:`, r.data);
+  }
+  return r.ok ? r.data : null;
 }
 
 async function ghUploadImage(file, fixedPath = null) {
