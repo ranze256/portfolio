@@ -389,6 +389,27 @@
       "client": "株式会社福寿園様",
       "featured": true,
       "published": true
+    },
+    {
+      "id": "elysium-mnsalphx",
+      "title": "Elysium【散髪ギミック】サムネイル制作",
+      "category": "graphicdesign",
+      "thumbnail": "images/uploads/1775788463642-Elysium_master2.png",
+      "description": "KURAKU.labのVRChat向けBOOTH販売アイテム「Elysium【散髪ギミック】」のサムネイルデザインを担当。自分や相手の髪を切るという独自ギミックの世界観を伝えるビジュアルに仕上げた。BOOTHの商品ページ謝辞欄に正式クレジット表記。Endeavor・SAGAに続くKURAKU.labからの継続依頼。",
+      "tags": [
+        "PhotoShop",
+        "GraphicDesign"
+      ],
+      "date": "2026-04",
+      "links": {
+        "vrchat": "",
+        "booth": "https://kurakurage-jp.booth.pm/items/8179787",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "KURAKU.lab",
+      "featured": false,
+      "published": true
     }
   ]
 }
