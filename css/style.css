@@ -638,10 +638,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .work-card.hidden { display: none; }
 .work-thumbnail {
   width: 100%;
-  height: auto;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   background: var(--bg-2);
+}
+
+/* カテゴリ別アスペクト比 */
+.work-card[data-category="world"]         .work-thumbnail,
+.work-card[data-category="event"]         .work-thumbnail,
+.work-card[data-category="other"]         .work-thumbnail {
+  aspect-ratio: 16 / 9;
+}
+.work-card[data-category="graphicdesign"] .work-thumbnail {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+.work-card[data-category="privatework"]   .work-thumbnail {
+  aspect-ratio: 4 / 3;
 }
 .work-thumbnail-placeholder {
   width: 100%;
