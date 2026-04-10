@@ -638,10 +638,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .work-card.hidden { display: none; }
 .work-thumbnail {
   width: 100%;
-  aspect-ratio: 1 / 1;
   display: block;
   object-fit: cover;
   background: var(--bg-2);
+}
+
+/* 16:9 — ワールド・イベント・自主制作・その他 */
+.work-card[data-category="world"]       .work-thumbnail,
+.work-card[data-category="event"]       .work-thumbnail,
+.work-card[data-category="privatework"] .work-thumbnail,
+.work-card[data-category="other"]       .work-thumbnail {
+  aspect-ratio: 16 / 9;
+}
+
+/* 1:1 — グラフィックデザイン */
+.work-card[data-category="graphicdesign"] .work-thumbnail {
+  aspect-ratio: 1 / 1;
 }
 .work-thumbnail-placeholder {
   width: 100%;
