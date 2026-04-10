@@ -5,7 +5,7 @@
       "title": "人外さんのいるカフェイベントワールド制作",
       "category": "world",
       "thumbnail": "images/uploads/1775355790557-VRChat_2024-12-30_14-49-43.473_1920x1080.png",
-      "description": "VRChatで活動中のRPイベント、人外さんのいるカフェ新イベントワールドを制作させて頂きました。",
+      "description": "VRChatで月2回開催される人外RPイベント「人外さんのいるカフェ（Gene Guile Holic）」の新イベントワールドを受注制作。独自の世界観（山で遭難した訪問者が辿り着く不思議なカフェ）に合わせたUnityワールドを設計・構築し、イベント専用空間として納品した。",
       "tags": [
         "Unity",
         "VRChat",
@@ -41,7 +41,7 @@
       },
       "client": "ずんだもんカフェ",
       "featured": false,
-      "published": true
+      "published": false
     },
     {
       "id": "commission-sample-01",
@@ -69,7 +69,7 @@
       "title": "オリジナル楽曲【空に描く】MV制作",
       "category": "other",
       "thumbnail": "images/uploads/1775356243295-__________2026-04-05_112813.png",
-      "description": "オリジナル楽曲【空に描く】のMVを担当させて頂きました。",
+      "description": "りあ氏作曲のオリジナル楽曲【空に描く】にて、MV映像制作を担当。After EffectsおよびBlenderを使用し、楽曲の世界観に合わせた映像演出を制作・納品した。",
       "tags": [
         "AfterEffects",
         "Blender"
@@ -90,7 +90,7 @@
       "title": "ずんだもんカフェ東北ずん子公式川柳コラボキャンペーン",
       "category": "event",
       "thumbnail": "https://pbs.twimg.com/media/FwEg4ddacAEtBl1?format=jpg&name=large",
-      "description": "ずんだもんカフェのずんだもん川柳キャンペーンにて東北ずん子・ずんだもんプロジェクト公式様より賞品提供をして頂きました。",
+      "description": "自身が運営するVRChatコミュニティ「ずんだもんカフェ」にて、東北ずん子・ずんだもんプロジェクト公式（SSS合同会社）とのコラボ川柳キャンペーンを企画・主催。公式との折衝から参加者募集・運営・結果発表まで対応し、公式からの賞品提供を実現した。",
       "tags": [],
       "date": "2023-05",
       "links": {
@@ -108,7 +108,7 @@
       "title": "ずんだもんカフェロゴ制作",
       "category": "privatework",
       "thumbnail": "https://pbs.twimg.com/media/GXEoxaTbEAEx8uO?format=png&name=medium",
-      "description": "ずんだもんカフェのロゴを制作致しました。",
+      "description": "自身が運営するVRChatコミュニティ「ずんだもんカフェ」のロゴをゼロから設計・制作。キャラクターの世界観に合わせたビジュアルデザインを行い、VRChat内のイベントグループアイコンやイベント出展時のサークルカットなど、コミュニティの対外的な顔として継続的に使用されている。",
       "tags": [
         "Event",
         "illustrator",
@@ -127,10 +127,10 @@
     },
     {
       "id": "-mnl64wr7",
-      "title": "東北ずん子ずんだもん公式コラボキャンペーン改変フォトコンテスト",
+      "title": "東北ずん子ずんだもん公式コラボ変フォトコンテスト",
       "category": "event",
       "thumbnail": "https://pbs.twimg.com/media/GdJMCRVbcAAWl9U?format=jpg&name=large",
-      "description": "東北ずん子ずんだもん公式様とずんだもんカフェと改変フォトコンコラボレーションキャンペーン\nを実施、賞品提供して頂きました。",
+      "description": "自身が運営するVRChatコミュニティ「ずんだもんカフェ」にて、東北ずん子・ずんだもん公式（SSS合同会社）とのコラボレーションイベントを企画・主催。イベントの立案・運営・告知ポスター制作を担当し、公式からの賞品提供を実現した。",
       "tags": [
         "illustrator",
         "Event"
@@ -148,10 +148,10 @@
     },
     {
       "id": "-mnl6h9ue",
-      "title": "ブレイクポイント株式会社「ずんだもんアメリカ進出大作戦」動画提供",
+      "title": "ブレイクポイント株式会社 × Anime NYC｜ずんだもんPR動画制作",
       "category": "event",
       "thumbnail": "https://pbs.twimg.com/media/G0DW_DobEAAOKJd?format=jpg&name=4096x4096",
-      "description": "VRChat内コンセプトカフェ交流イベント\n「#ずんだもんカフェ」\n投稿させて頂きました。",
+      "description": "グローバル進出支援を手がけるブレイクポイント株式会社の依頼を受け、「ずんだもんアメリカ進出大作戦」のPR動画を制作。企業との交渉から制作・納品まで一貫して担当し、ニューヨーク最大級のアニメイベント「Anime NYC 2025」のずんだもんブースにて実際に上映された。",
       "tags": [
         "AffterEfects"
       ],
@@ -171,7 +171,7 @@
       "title": "VRC広島集会様ロゴ制作",
       "category": "graphicdesign",
       "thumbnail": "images/uploads/1775362047771-________4.png",
-      "description": "VRC広島集会様のロゴグラフィック、ポスター、3Dバッジを制作させて頂きました。",
+      "description": "一般社団法人REARVおよびVRC広島集会の依頼を受け、ロゴグラフィック・イベントポスター・3Dバッジの制作を一括担当。広島の象徴である厳島神社の鳥居をモチーフにした円形ロゴをはじめ、イベントのブランドビジュアルを統一的にデザインした。",
       "tags": [
         "Event",
         "Logo",
@@ -214,7 +214,7 @@
       "title": "大黒イコナ様名刺制作",
       "category": "graphicdesign",
       "thumbnail": "images/uploads/1775362907402-__________2026-04-05_131909.png",
-      "description": "VRC九州集会 共同主催をされている大黒イコナ様の\n名刺デザインを担当しました。",
+      "description": "VRC九州集会の共同主催者・大黒イコナ様の名刺デザインを担当。キャラクターイラストをしぐりーら氏(@NdoloKhuba)が制作、グラフィックデザイン・レイアウト設計を自身が担当した共同制作。VRChatグループリンクおよびXアカウントのQRコードを組み込んだ、VRChatユーザー向けの実用的な名刺に仕上げた。",
       "tags": [
         "Graphic",
         "illustrator"
@@ -235,7 +235,7 @@
       "title": "Endeavor【ギミック付き眼鏡】サムネイル制作",
       "category": "graphicdesign",
       "thumbnail": "images/uploads/1775376606834-dacb5b92-17b6-4afa-ac0a-6178e74edc53.png",
-      "description": "KURAKU.lab様のBoothアイテム、\nEndeavor【ギミック付き眼鏡】サムネイルデザインを担当しました。",
+      "description": "KURAKU.labのVRChat向けBOOTH販売アイテム「Endeavor【ギミック付き眼鏡】」のサムネイルデザインを担当。IllustratorおよびPhotoshopを使用し、商品の魅力を伝えるビジュアルを制作。",
       "tags": [
         "illustrator",
         "Photoshop"
@@ -256,7 +256,7 @@
       "title": "SAGA【ギミック付きマスケット銃】サムネイル制作",
       "category": "graphicdesign",
       "thumbnail": "images/uploads/1775376929762-7e703dd5-a828-4a08-9e60-52bd088d7b57.png",
-      "description": "KURAKU.lab様のBoothアイテム、\nSAGA【ギミック付きマスケット銃】サムネイルデザインを担当しました。",
+      "description": "KURAKU.labのVRChat向けBOOTH販売アイテム「SAGA【ギミック付きマスケット銃】」のサムネイルデザインを担当。Photoshopを使用し、武器の重厚感とクールな世界観を引き立てるビジュアルに仕上げた。",
       "tags": [
         "PhotoShop"
       ],
@@ -276,10 +276,11 @@
       "title": "愛してあげられなくてごめんね / ブブゼラ ft. 重音テトSV  ファンMV制作",
       "category": "privatework",
       "thumbnail": "images/uploads/1775377841963-__________2026-04-05_172810.png",
-      "description": "ブブゼラ様の愛してあげられなくてごめんね / ブブゼラ ft. 重音テトSV  \nの自主制作MVを制作しました。",
+      "description": "ブブゼラ氏の楽曲「愛してあげられなくてごめんね / ブブゼラ ft. 重音テトSV」のファンMVを自主制作。Blenderによる3D映像制作、After Effectsによるコンポジット・エフェクト処理、AviUtlによる編集・書き出しまで一貫して担当した。",
       "tags": [
         "Blender",
-        "AfterEffects"
+        "AfterEffects",
+        "Aviutl"
       ],
       "date": "2024-06",
       "links": {
@@ -294,10 +295,10 @@
     },
     {
       "id": "ag03-mnlicbvy",
-      "title": "AG03",
+      "title": "YAMAHA AG03 3Dモデリング",
       "category": "privatework",
       "thumbnail": "images/uploads/1775378199280-AG03____2.png",
-      "description": "blenderで制作したYAMAHA AG03の3Dモデルです",
+      "description": "Blenderを用いてYAMAHA AG03オーディオミキサーを3Dモデリングした自主制作作品。実機の形状・素材感・ディテールを忠実に再現し、フォトリアルなレンダリングに仕上げた。",
       "tags": [
         "blender"
       ],
@@ -314,10 +315,10 @@
     },
     {
       "id": "--mnlielfi",
-      "title": "ぺんてる グラフギア",
+      "title": "ぺんてる グラフギア1000 3Dモデリング",
       "category": "privatework",
       "thumbnail": "images/uploads/1775378305533-________.png",
-      "description": "blenderで制作したぺんてる グラフギアの3Dモデルです",
+      "description": "Blenderを用いてぺんてる グラフギア1000（製図用シャープペンシル）を3Dモデリングした自主制作作品。金属素材の質感・細部のディテールを忠実に再現し、フォトリアルなレンダリングに仕上げた。",
       "tags": [],
       "date": "",
       "links": {
@@ -332,10 +333,10 @@
     },
     {
       "id": "-mnlijli9",
-      "title": "壁紙デザイン",
+      "title": "Heartbeat Overdrive",
       "category": "privatework",
       "thumbnail": "images/uploads/1775378535919-11_________.png",
-      "description": "個人用途でVRChatで使用しているアバターの壁紙をデザインしました。",
+      "description": "VRChatで使用している自身のアバターをフィーチャーした個人用壁紙をデザイン。IllustratorおよびPhotoshopを使用し、赤×黒のグランジ調タイポグラフィとアバタービジュアルを組み合わせたグラフィックデザイン作品。",
       "tags": [
         "illustrator",
         "Photoshop"
@@ -349,14 +350,14 @@
       },
       "client": "",
       "featured": false,
-      "published": true
+      "published": false
     },
     {
       "id": "-mnliwufm",
       "title": "ずんだもんカフェ",
       "category": "privatework",
       "thumbnail": "images/uploads/1775379157585-__________.png",
-      "description": "AIボイスチェンジャーを用いてずんだもんの容姿、声で接客を行うカフェです。\n私がオーナーをしており、不定期にてコラボ企画を行っております。\n詳しくは実績ポートフォリオをご覧ください。",
+      "description": "AIボイスチェンジャーを用いてずんだもんの容姿・声で接客を行うVRChatコンセプトカフェ。2023年1月より自身がオーナーとして運営。東北ずん子・ずんだもん公式（SSS合同会社）やブレイクポイント株式会社など複数の企業・IPとのコラボ実績を持つ。ロゴ・イベント企画・告知デザイン含め自身が担当。",
       "tags": [],
       "date": "2023-01",
       "links": {
@@ -387,6 +388,27 @@
       },
       "client": "株式会社福寿園様",
       "featured": true,
+      "published": true
+    },
+    {
+      "id": "elysium-mnsalphx",
+      "title": "Elysium【散髪ギミック】サムネイル制作",
+      "category": "graphicdesign",
+      "thumbnail": "images/uploads/1775788463642-Elysium_master2.png",
+      "description": "KURAKU.labのVRChat向けBOOTH販売アイテム「Elysium【散髪ギミック】」のサムネイルデザインを担当。自分や相手の髪を切るという独自ギミックの世界観を伝えるビジュアルに仕上げた。BOOTHの商品ページ謝辞欄に正式クレジット表記。Endeavor・SAGAに続くKURAKU.labからの継続依頼。",
+      "tags": [
+        "PhotoShop",
+        "GraphicDesign"
+      ],
+      "date": "2026-04",
+      "links": {
+        "vrchat": "",
+        "booth": "https://kurakurage-jp.booth.pm/items/8179787",
+        "twitter": "",
+        "youtube": ""
+      },
+      "client": "KURAKU.lab",
+      "featured": false,
       "published": true
     }
   ]
