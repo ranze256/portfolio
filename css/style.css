@@ -638,8 +638,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .work-card.hidden { display: none; }
 .work-thumbnail {
   width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  background: var(--bg-2);
 }
 .work-thumbnail-placeholder {
   width: 100%;
