@@ -68,7 +68,7 @@
     {
       "name": "Adobe After Effects",
       "category": "Motion",
-      "level": 70
+      "level": 40
     },
     {
       "name": "Adobe Photoshop",
@@ -78,37 +78,37 @@
     {
       "name": "Adobe illustrator",
       "category": "Graphic",
-      "level": 70
+      "level": 50
     },
     {
       "name": "Codex",
       "category": "Editor",
-      "level": 70
+      "level": 25
     },
     {
       "name": "Claude Code",
       "category": "Editor",
-      "level": 70
+      "level": 75
     },
     {
       "name": "VScode",
       "category": "Editor",
-      "level": 70
+      "level": 50
     },
     {
       "name": "OctaneRender",
       "category": "3D",
-      "level": 70
+      "level": 20
     },
     {
       "name": "Cycles",
       "category": "3D",
-      "level": 70
+      "level": 50
     },
     {
       "name": "SubstancePainter",
       "category": "3D",
-      "level": 70
+      "level": 20
     }
   ]
 }
