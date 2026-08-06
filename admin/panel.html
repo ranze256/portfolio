@@ -135,9 +135,15 @@ label{display:block;font-size:12px;font-weight:600;letter-spacing:.06em;color:va
 
 /* Skills list */
 .skill-list{display:flex;flex-direction:column;gap:8px}
-.skill-row{display:grid;grid-template-columns:1fr 160px 100px 36px;gap:8px;align-items:center}
-.skill-row input,
+.skill-row{display:grid;grid-template-columns:1fr 160px 180px 36px;gap:8px;align-items:center}
+.skill-row input[type=text],
 .skill-row select{padding:8px 12px}
+/* level slider */
+.skill-level-ctl{display:flex;align-items:center;gap:10px}
+.skill-level-ctl input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:var(--bg2);border:1px solid var(--brd);outline:none;cursor:pointer}
+.skill-level-ctl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:50%;background:var(--red);border:2px solid #fff;cursor:pointer}
+.skill-level-ctl input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--red);border:2px solid #fff;cursor:pointer}
+.skill-pct{min-width:40px;text-align:right;font-variant-numeric:tabular-nums;font-weight:700;font-size:13px;color:var(--t1)}
 .btn-remove{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:var(--r);background:rgba(239,68,68,.08);color:#f87171;border:1px solid rgba(239,68,68,.2);font-size:14px;transition:all .2s;flex-shrink:0}
 .btn-remove:hover{background:rgba(239,68,68,.2)}
 .btn-add-skill{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);color:var(--t2);font-size:13px;font-weight:600;margin-top:12px;transition:all .2s}
@@ -1140,14 +1146,13 @@ function renderSkills() {
       <div class="skill-list" id="skill-list">
         ${skills.map((s,i) => `
           <div class="skill-row" data-i="${i}">
-            <input value="${s.name||''}" id="sk-name-${i}" placeholder="スキル名 (例: Unity)">
-            <input value="${s.category||''}" id="sk-cat-${i}" placeholder="カテゴリ (例: 3D / ゲームエンジン)" class="skill-level-col">
-            <select id="sk-level-${i}">
-              <option value="90" ${s.level>=85?'selected':''}>★★★ 得意</option>
-              <option value="70" ${s.level>=60&&s.level<85?'selected':''}>★★☆ 中級</option>
-              <option value="45" ${s.level>=30&&s.level<60?'selected':''}>★☆☆ 初級</option>
-              <option value="20" ${s.level<30?'selected':''}>☆☆☆ 学習中</option>
-            </select>
+            <input type="text" value="${s.name||''}" id="sk-name-${i}" placeholder="スキル名 (例: Unity)">
+            <input type="text" value="${s.category||''}" id="sk-cat-${i}" placeholder="カテゴリ (例: 3D / ゲームエンジン)" class="skill-level-col">
+            <div class="skill-level-ctl">
+              <input type="range" min="0" max="100" step="5" value="${Number(s.level)||0}" id="sk-level-${i}"
+                     oninput="document.getElementById('sk-pct-${i}').textContent=this.value+'%'">
+              <span class="skill-pct" id="sk-pct-${i}">${Number(s.level)||0}%</span>
+            </div>
             <button class="btn-remove" onclick="removeSkill(${i})"><i class="fa-solid fa-minus"></i></button>
           </div>`).join('')}
       </div>
