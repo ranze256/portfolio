@@ -3,210 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <meta name="description" content="3D / メタバース クリエイターのポートフォリオ">
-  <meta property="og:title"       content="Portfolio">
-  <meta property="og:description" content="3D / メタバース クリエイター Portfolio">
+  <title>RANZE — 3D / Metaverse Creative</title>
+  <meta name="description" content="ranze｜3D・メタバース領域のなんでも屋。VRChatワールド制作、ギミック実装、イベント企画、グラフィックデザイン。">
+  <meta property="og:title"       content="RANZE — 3D / Metaverse Creative">
+  <meta property="og:description" content="ranze｜3D・メタバース領域のなんでも屋。企画から実装まで。">
   <meta property="og:type"        content="website">
+  <meta name="theme-color" content="#07080A">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="icon/Eg8TjoFm_400x400.jpg">
-  <link rel="apple-touch-icon" href="icon/Eg8TjoFm_400x400.jpg">
+  <link rel="icon" href="images/avatar.png">
+  <link rel="apple-touch-icon" href="images/avatar.png">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@300;400;500&family=Syncopate:wght@400&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/v2.css">
 </head>
 <body>
 
-  <!-- ========== Navigation ========== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#" class="nav-logo" id="nav-logo">PORT<span>FOLIO</span></a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#selfmade">Private Work</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" id="nav-toggle" aria-label="メニュー">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+<!-- ============ BOOT ============ -->
+<div class="boot" id="boot">
+  <div class="boot-inner">
+    <pre class="boot-log mono" id="boot-log"></pre>
+    <div class="boot-bar"><span id="boot-bar-fill"></span></div>
+  </div>
+  <div class="boot-skip mono">CLICK TO SKIP</div>
+</div>
+
+<!-- ============ GLOBAL FX OVERLAY ============ -->
+<div class="fx-grain" aria-hidden="true"></div>
+
+<!-- ============ TOP HUD ============ -->
+<header class="hud" id="hud">
+  <div class="hud-l">
+    <a href="#top" class="hud-mark">RANZE</a>
+    <span class="mono hud-sub">/ PORTFOLIO</span>
+  </div>
+  <nav class="hud-nav mono" id="hud-nav">
+    <a href="#works"><i>01</i>WORKS</a>
+    <a href="#private"><i>02</i>PRIVATE</a>
+    <a href="#about"><i>03</i>ABOUT</a>
+    <a href="#skills"><i>04</i>SKILLS</a>
+    <a href="#contact"><i>05</i>CONTACT</a>
   </nav>
+  <div class="hud-r mono">
+    <span class="hud-live"><b></b>RENDER: FULL</span>
+    <span id="hud-clock">JST --:--:--</span>
+  </div>
+  <button class="hud-burger" id="hud-burger" aria-label="メニュー"><span></span><span></span></button>
+</header>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#works">Works</a></li>
-      <li><a href="#selfmade">Private Work</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+<div class="drawer" id="drawer">
+  <nav class="mono">
+    <a href="#works"><i>01</i>WORKS<em>制作実績</em></a>
+    <a href="#private"><i>02</i>PRIVATE<em>自主制作</em></a>
+    <a href="#about"><i>03</i>ABOUT<em>プロフィール</em></a>
+    <a href="#skills"><i>04</i>SKILLS<em>使用ツール</em></a>
+    <a href="#contact"><i>05</i>CONTACT<em>お問い合わせ</em></a>
+  </nav>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="hero-vign" aria-hidden="true"></div>
+  <div class="fx-scan" aria-hidden="true"></div>
+
+  <div class="hero-frame" aria-hidden="true">
+    <span class="cb tl"></span><span class="cb tr"></span>
+    <span class="cb bl"></span><span class="cb br"></span>
   </div>
 
-  <!-- ========== Hero ========== -->
-  <section id="hero" class="hero">
-    <canvas id="particles-canvas"></canvas>
-    <div class="hero-grid"></div>
-    <div class="hero-accent-line"></div>
-    <div class="hero-content">
-      <div class="hero-inner">
-
-        <!-- Text side -->
-        <div class="hero-text">
-          <div class="hero-eyebrow">
-            3D / メタバース クリエイター
-            <span id="commission-badge" class="commission-badge" style="display:none"></span>
-          </div>
-          <h1 class="hero-name" id="hero-name">Your Name</h1>
-          <p class="hero-tagline" id="hero-tagline"></p>
-          <div class="hero-social" id="hero-social"></div>
-          <div class="hero-cta">
-            <a href="#works" class="btn btn-primary">
-              <i class="fa-solid fa-play"></i> Works を見る
-            </a>
-            <a href="#contact" class="btn btn-secondary">
-              Contact
-            </a>
-          </div>
-        </div>
-
-        <!-- Avatar side -->
-        <div class="hero-avatar-col">
-          <div class="hero-avatar-wrap" id="hero-avatar-wrap">
-            <div class="hero-avatar-frame">
-              <div class="hero-avatar-placeholder">🎮</div>
-            </div>
-            <div class="hero-avatar-corner tl"></div>
-            <div class="hero-avatar-corner tr"></div>
-            <div class="hero-avatar-corner bl"></div>
-            <div class="hero-avatar-corner br"></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <div class="scroll-dot"></div>
-    </div>
-  </section>
-
-  <!-- ========== About ========== -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">About</div>
-        <h2 class="section-title">ranzeについて</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-bio reveal">
-          <h3>自己紹介</h3>
-          <p id="bio-text"></p>
-        </div>
-        <div class="stats-grid" id="stats-grid">
-          <!-- Rendered by JS -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Works ========== -->
-  <section id="works" class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Works</div>
-        <h2 class="section-title">制作実績・ポートフォリオ</h2>
-      </div>
-      <div class="works-controls">
-        <div class="filter-bar">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="world">🌍 World</button>
-          <button class="filter-btn" data-filter="event">🎉 Event</button>
-          <button class="filter-btn" data-filter="privatework">🖌️ PrivateWork</button>
-          <button class="filter-btn" data-filter="graphicdesign">🎨 GraphicDesign</button>
-          <button class="filter-btn" data-filter="other">Other</button>
-        </div>
-        <button class="sort-toggle active" id="sort-btn" data-sort="newest">
-          <i class="fa-solid fa-arrow-down-wide-short"></i> 新着順
-        </button>
-      </div>
-      <div class="works-grid" id="works-grid">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Self-made Works ========== -->
-  <section id="selfmade" class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Private Work</div>
-        <h2 class="section-title">自主制作作品</h2>
-      </div>
-      <div class="works-grid" id="selfmade-grid">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Skills ========== -->
-  <section id="skills" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Skills</div>
-        <h2 class="section-title">使用ツール・技術</h2>
-      </div>
-      <div class="skills-sections" id="skills-container">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Contact ========== -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Contact</div>
-        <h2 class="section-title">お問い合わせ</h2>
-      </div>
-      <p class="contact-intro">
-        お仕事のご依頼・コラボのお誘いなど、お気軽にどうぞ。
-      </p>
-      <div class="contact-grid" id="contact-grid">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Footer ========== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">PORT<span>FOLIO</span></div>
-        <p class="footer-copy" id="footer-text"></p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ========== Work Detail Modal ========== -->
-  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
-    <div class="modal" id="modal">
-      <button class="modal-close" id="modal-close" aria-label="閉じる">×</button>
-      <div id="modal-content"></div>
-    </div>
+  <div class="hero-tick hero-tick-l mono" aria-hidden="true">
+    <span>ACTIVE SONAR</span><b></b><span>SWEEP 360</span>
+  </div>
+  <div class="hero-tick hero-tick-r mono" aria-hidden="true">
+    <span>PT.CLOUD</span><b></b><span id="fx-count">0000 PTS</span>
   </div>
 
-  <!-- Main Script -->
-  <script src="js/main.js"></script>
+  <div class="hero-inner">
+    <div class="hero-eyebrow mono">
+      <span class="eb-line"></span>
+      3D / METAVERSE CREATIVE
+      <span id="commission-badge" class="badge" hidden></span>
+    </div>
+
+    <h1 class="wordmark" id="hero-name">RANZE</h1>
+
+    <div class="hero-rule"><span></span></div>
+
+    <p class="hero-tagline" id="hero-tagline"></p>
+
+    <div class="hero-grid-nav" id="hero-grid-nav">
+      <a href="#works" class="gnav">
+        <svg viewBox="0 0 24 24" class="gi"><rect x="3" y="3" width="7.5" height="7.5"/><rect x="13.5" y="3" width="7.5" height="7.5"/><rect x="3" y="13.5" width="7.5" height="7.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5"/></svg>
+        <span class="mono">WORKS</span><em>制作実績</em>
+      </a>
+      <a href="#private" class="gnav">
+        <svg viewBox="0 0 24 24" class="gi"><path d="M4 20l3-9 10-10 3 3-10 10-6 6z"/><path d="M14 4l6 6"/></svg>
+        <span class="mono">PRIVATE</span><em>自主制作</em>
+      </a>
+      <a href="#about" class="gnav">
+        <svg viewBox="0 0 24 24" class="gi"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        <span class="mono">ABOUT</span><em>経歴</em>
+      </a>
+      <a href="#contact" class="gnav">
+        <svg viewBox="0 0 24 24" class="gi"><rect x="2.5" y="5" width="19" height="14"/><path d="M2.5 6.5L12 13.5l9.5-7"/></svg>
+        <span class="mono">CONTACT</span><em>依頼</em>
+      </a>
+    </div>
+
+    <div class="hero-social" id="hero-social"></div>
+  </div>
+
+  <div class="hero-foot">
+    <div class="ticker mono"><span id="hero-typed"></span><b class="caret"></b></div>
+    <a href="#works" class="scroll-hint mono">SCROLL<span></span></a>
+  </div>
+</section>
+
+<!-- ============ WORKS ============ -->
+<section class="sec" id="works">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-idx mono">01</div>
+      <div class="sec-ttl">
+        <div class="sec-en mono">WORKS</div>
+        <h2 class="sec-jp">制作実績</h2>
+      </div>
+      <div class="sec-rule"></div>
+      <div class="sec-cnt mono" id="works-count">--</div>
+    </div>
+
+    <div class="ctrl">
+      <div class="filters mono" id="filters">
+        <button class="fbtn active" data-filter="all">ALL</button>
+        <button class="fbtn" data-filter="world">WORLD</button>
+        <button class="fbtn" data-filter="event">EVENT</button>
+        <button class="fbtn" data-filter="privatework">PRIVATE</button>
+        <button class="fbtn" data-filter="graphicdesign">GRAPHIC</button>
+        <button class="fbtn" data-filter="other">OTHER</button>
+      </div>
+      <button class="sortbtn mono" id="sort-btn" data-sort="newest">SORT: NEWEST</button>
+    </div>
+
+    <div class="cards" id="works-grid"></div>
+  </div>
+</section>
+
+<!-- ============ PRIVATE WORK ============ -->
+<section class="sec" id="private">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-idx mono">02</div>
+      <div class="sec-ttl">
+        <div class="sec-en mono">PRIVATE WORK</div>
+        <h2 class="sec-jp">自主制作</h2>
+      </div>
+      <div class="sec-rule"></div>
+      <div class="sec-cnt mono" id="private-count">--</div>
+    </div>
+    <div class="cards" id="selfmade-grid"></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-idx mono">03</div>
+      <div class="sec-ttl">
+        <div class="sec-en mono">ABOUT</div>
+        <h2 class="sec-jp">経歴・実績サマリ</h2>
+      </div>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="about">
+      <div class="about-bio panel reveal">
+        <div class="panel-tag mono">// BIOGRAPHY</div>
+        <p id="bio-text"></p>
+      </div>
+      <div class="stats" id="stats-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="sec" id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-idx mono">04</div>
+      <div class="sec-ttl">
+        <div class="sec-en mono">SKILLS</div>
+        <h2 class="sec-jp">使用ツール・技術</h2>
+      </div>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="skills" id="skills-container"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec sec-contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-idx mono">05</div>
+      <div class="sec-ttl">
+        <div class="sec-en mono">CONTACT</div>
+        <h2 class="sec-jp">お問い合わせ</h2>
+      </div>
+      <div class="sec-rule"></div>
+    </div>
+    <p class="contact-lead">
+      お仕事のご依頼・コラボのお誘いなど、お気軽にどうぞ。<br>
+      <span class="mono dim">RESPONSE: USUALLY WITHIN 24H / JST</span>
+    </p>
+    <div class="contacts" id="contact-grid"></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-mark">RANZE</div>
+    <div class="mono dim" id="footer-text"></div>
+  </div>
+</footer>
+
+<!-- ============ DOSSIER MODAL ============ -->
+<div class="dossier" id="modal-overlay" role="dialog" aria-modal="true" aria-label="作品詳細">
+  <div class="dossier-box" id="modal">
+    <button class="dossier-close mono" id="modal-close" aria-label="閉じる">CLOSE ✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script src="js/v2.js"></script>
 </body>
 </html>
