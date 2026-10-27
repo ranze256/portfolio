@@ -410,6 +410,28 @@
       "client": "KURAKU.lab",
       "featured": false,
       "published": true
+    },
+    {
+      "id": "zundamon-cafe-100th-world",
+      "title": "ずんだもんカフェ100回記念イベント 会場ワールド企画・設計",
+      "category": "world",
+      "thumbnail": "images/uploads/20261027-zundamon-cafe-100th-world.jpg",
+      "description": "自身がオーナーを務めるVRChatコミュニティ「ずんだもんカフェ」の第100回記念イベント（2026年10月25日開催・東北ずん子・ずんだもんプロジェクト公式がスペシャルゲストとして出演）のために、会場となるイベントワールドを企画・設計から制作。\n\n担当範囲\n\n会場の間取り設計（ステージ・舞台袖・楽屋・客席・エントランス）\nステージ演出（ランウェイ・動画再生・拍手ボタン）\n進行用の制御盤とスタッフ専用の裏口\n案内板・クレジット板・床の動線サイン\n軽量化とQuest対応（最大60人・PC/Quest両対応・約23MB）",
+      "tags": [
+        "Unity",
+        "VRChat",
+        "World"
+      ],
+      "date": "2026-10",
+      "links": {
+        "vrchat": "",
+        "booth": "",
+        "twitter": "https://x.com/uraurh/status/2114930445217579437",
+        "youtube": ""
+      },
+      "client": "ずんだもんカフェ",
+      "featured": true,
+      "published": true
     }
   ]
 }
